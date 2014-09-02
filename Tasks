@@ -1,0 +1,6 @@
+Expose as web services using jersey.
+Generate test classes to ensure CRUD operations are working fine. 
+Update code generation logic to generate loadFromResultSet and toObjectArray dynamically.
+
+ 
+ 
