@@ -17,7 +17,6 @@ import com.minimart.service.BrandService;
 import com.minimart.dao.BrandDAO;
 import com.minimart.dao.impl.BrandDAOImpl;
 
-@Provider
 @Path("brand")
 public class BrandServiceImpl implements BrandService {
 

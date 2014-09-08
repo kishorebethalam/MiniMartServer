@@ -35,7 +35,7 @@ public class CodeGenerator {
 	private String daoImplPackage;
 	
 	private String serviceTestPackage;
-	
+	private String restPackage;
 
 
 	/**
@@ -55,6 +55,7 @@ public class CodeGenerator {
 		this.daoPackage = this.basePackage + ".dao";
 		this.daoImplPackage = this.basePackage + ".dao.impl";
 		this.serviceTestPackage = this.basePackage + ".service";
+		this.restPackage = this.basePackage + ".restclient";
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class CodeGenerator {
 	public static void main(String[] args) {
 
 		CodeGenerator generator = new CodeGenerator("com.minimart",
-				"/Users/kbethalam/Desktop/Work/MiniMart/src/main/java/", "/src/main/resources/templates/freemaker/");
+				"/Users/kbethalam/Desktop/Work/MiniMartServer/src/main/java/", "/src/main/resources/templates/freemaker/");
 
 		List<String> models = new ArrayList<String>();
 		models.add("Category");
@@ -90,6 +91,7 @@ public class CodeGenerator {
 		data.put("daoPackage", this.daoPackage);
 		data.put("daoImplPackage", this.daoImplPackage);
 		data.put("serviceTestPackage", this.serviceTestPackage);
+		data.put("restPackage", this.restPackage);
 		
 		
 		for (String modelClass : modelClassesNames) {
@@ -115,6 +117,7 @@ public class CodeGenerator {
 			generateDAOImpl(modelClass, data);
 			
 			generateServiceTest(modelClass, data);
+			generateRest(modelClass, data);
 
 		}
 		
@@ -215,7 +218,23 @@ public class CodeGenerator {
 		}
 	}
 
+	private void generateRest(String modelClass, Map<String, Object> data) {
 
+		// Freemarker configuration object
+		Configuration cfg = new Configuration();
+		try {
+			// Load template from source folder
+			Template template = cfg.getTemplate(this.templatesFolderPath + "RestClient.ftl");
+
+			generateFile(modelClass + "RESTClient", this.restPackage, template,
+					data);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+	}
 	public void generateCRUDQueries(String className, Map<String, Object> data) {
 
 		try {

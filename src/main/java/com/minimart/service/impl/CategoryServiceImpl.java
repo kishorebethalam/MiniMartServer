@@ -17,7 +17,6 @@ import com.minimart.service.CategoryService;
 import com.minimart.dao.CategoryDAO;
 import com.minimart.dao.impl.CategoryDAOImpl;
 
-@Provider
 @Path("category")
 public class CategoryServiceImpl implements CategoryService {
 

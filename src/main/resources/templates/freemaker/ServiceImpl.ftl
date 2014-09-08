@@ -17,7 +17,6 @@ import ${servicePackage}.${className}Service;
 import ${daoPackage}.${className}DAO;
 import ${daoImplPackage}.${className}DAOImpl;
 
-@Provider
 @Path("${variableName}")
 public class ${className}ServiceImpl implements ${className}Service {
 

@@ -18,7 +18,7 @@ public final class DBUtil {
 
 	private static Properties Queries = new Properties();
 
-	private final static String dbURL = "jdbc:mysql://localhost/pos?" +
+	private final static String dbURL = "jdbc:mysql://localhost/pos?zeroDateTimeBehavior=convertToNull&" +
 	// "user="+userName+"&password="+password;
 			"user=" + userName;
 

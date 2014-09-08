@@ -17,7 +17,6 @@ import com.minimart.service.ManufacturerService;
 import com.minimart.dao.ManufacturerDAO;
 import com.minimart.dao.impl.ManufacturerDAOImpl;
 
-@Provider
 @Path("manufacturer")
 public class ManufacturerServiceImpl implements ManufacturerService {
 

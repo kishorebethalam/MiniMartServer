@@ -42,6 +42,8 @@
   <classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-xc/1.9.12/jackson-xc-1.9.12.jar"/>
   <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.7.2/slf4j-log4j12-1.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-webapp/7.5.1.v20110908/jetty-webapp-7.5.1.v20110908.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-xml/7.5.1.v20110908/jetty-xml-7.5.1.v20110908.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-util/7.5.1.v20110908/jetty-util-7.5.1.v20110908.jar"/>
@@ -55,4 +57,6 @@
   <classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/3.5.1/ecj-3.5.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/mortbay/jetty/jsp-api-2.1-glassfish/2.1.v20100127/jsp-api-2.1-glassfish-2.1.v20100127.jar"/>
   <classpathentry kind="var" path="M2_REPO/ant/ant/1.6.5/ant-1.6.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-servlets/7.5.1.v20110908/jetty-servlets-7.5.1.v20110908.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-client/7.5.1.v20110908/jetty-client-7.5.1.v20110908.jar"/>
 </classpath>

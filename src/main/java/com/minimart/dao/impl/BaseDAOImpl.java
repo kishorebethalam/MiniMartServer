@@ -6,7 +6,7 @@ public class BaseDAOImpl {
 	// JDBC driver name and database URL
 
 	   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	   static final String DB_URL = "jdbc:mysql://localhost/POS";
+	   static final String DB_URL = "jdbc:mysql://localhost/POS?zeroDateTimeBehavior=convertToNull";
 
 	   //  Database credentials
 	   static final String USER = "kbethalam";

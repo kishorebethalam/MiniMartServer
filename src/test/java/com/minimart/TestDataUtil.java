@@ -4,16 +4,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.converters.DateConverter;
+import org.apache.commons.beanutils.converters.DateTimeConverter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.minimart.model.POSModel;
 import com.minimart.model.POSModelFactory;
+import com.minimart.util.Configuration;
 
 public class TestDataUtil {
 
@@ -65,7 +70,7 @@ public class TestDataUtil {
 		}
 		
 //		System.out.println("No of items in testData" + testData.size());
-//		System.out.println(dataJSON.toString());
+		System.out.println(dataJSON.toString());
 	}
 
 	private static String readFile(String filename) {
@@ -73,7 +78,7 @@ public class TestDataUtil {
 		String resourcesPath = Configuration.getAppProperty("RootDirectory") + "/src/test/resources";
 		String filePath = resourcesPath + File.separator + filename;
 		
-//		System.out.println("Trying to import " + filePath);
+		System.out.println("Trying to import " + filePath);
 		File file = new File(filePath); // for ex foo.txt
 		try {
 			FileReader reader = new FileReader(file);

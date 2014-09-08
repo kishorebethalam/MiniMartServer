@@ -1,13 +1,18 @@
 package com.minimart;
 
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.converters.DateConverter;
+import org.apache.commons.beanutils.converters.DateTimeConverter;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 import com.minimart.model.Manufacturer;
 import com.minimart.service.ManufacturerService;
 import com.minimart.service.impl.ManufacturerServiceImpl;
+import com.minimart.util.Configuration;
 
 /**
  * 
@@ -71,7 +76,8 @@ public class Main {
         
         //The port that we should run on can be set into an environment variable
         //Look for that variable and default to 8080 if it isn't there.
-        String webPort = System.getenv("PORT");
+        
+        String webPort = Configuration.getAppProperty("Port");
         if(webPort == null || webPort.isEmpty()) {
             webPort = "8080";
         }
@@ -79,6 +85,7 @@ public class Main {
         Server server = new Server(Integer.valueOf(webPort));
         WebAppContext root = new WebAppContext();
 
+        
         root.setContextPath("/");
         root.setDescriptor(webappDirLocation+"/WEB-INF/web.xml");
         root.setResourceBase(webappDirLocation);
@@ -92,6 +99,11 @@ public class Main {
         
         server.setHandler(root);
         
+		String[] patterns = new String[] {"yyyy-MM-dd", "dd-MM-yyyy"};
+		DateTimeConverter converter = new DateConverter();
+		converter.setPatterns(patterns);
+		ConvertUtils.register(converter, Date.class);
+
         server.start();
         server.join();   
     }

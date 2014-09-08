@@ -17,7 +17,6 @@ import com.minimart.service.ProductService;
 import com.minimart.dao.ProductDAO;
 import com.minimart.dao.impl.ProductDAOImpl;
 
-@Provider
 @Path("product")
 public class ProductServiceImpl implements ProductService {
 

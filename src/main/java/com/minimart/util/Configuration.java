@@ -1,8 +1,10 @@
-package com.minimart;
+package com.minimart.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
+
+import com.minimart.MinimalServerRest; 
 
 
 public class Configuration {
@@ -14,7 +16,7 @@ public class Configuration {
     private static Properties appProperties = new Properties();
     static {
         try {
-        	InputStream stream = new FileInputStream(new File("/Users/kbethalam/Desktop/Work/MiniMart/App.properties"));
+        	InputStream stream = new FileInputStream(new File("/Users/kbethalam/Desktop/Work/MiniMartServer/App.properties"));
 //        	InputStream stream = Thread.currentThread().getContextClassLoader()
 //                    .getResourceAsStream(AppPropertiesFileName); 
         	appProperties.load(stream);

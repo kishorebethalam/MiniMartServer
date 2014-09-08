@@ -36,7 +36,7 @@
             "sellPrice": 115,
             "buyPrice": 75,
             "reorderVolume": 1,
-            "reorderFrequency": '1 Week'
+            "reorderFrequency": "1 Week"
         },
         {
             "productMasterId": 1,
@@ -46,7 +46,7 @@
             "sellPrice": 355,
             "buyPrice": 225,
             "reorderVolume": 1,
-            "reorderFrequency": '1 Week'
+            "reorderFrequency": "1 Week"
         }
     ],
     "ProductMaster": [
@@ -60,5 +60,16 @@
             "categoryId": 1,
             "brandId": 1
         }
-    ]
+    ],
+    "InventoryItem" : [
+  		{
+    		"quantity" : 10,
+    		"expiryDate" : "2014-09-08",
+    		"id" : 1,
+    		"productId" : 1,
+    		"receivedDate" : "2014-08-24",
+    		"promotionalOffer" : "1+1 test",
+    		"trackingCode" : "123456789"
+  		}
+	]
 }

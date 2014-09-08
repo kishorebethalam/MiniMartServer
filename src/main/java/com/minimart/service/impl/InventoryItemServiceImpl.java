@@ -17,7 +17,6 @@ import com.minimart.service.InventoryItemService;
 import com.minimart.dao.InventoryItemDAO;
 import com.minimart.dao.impl.InventoryItemDAOImpl;
 
-@Provider
 @Path("inventoryItem")
 public class InventoryItemServiceImpl implements InventoryItemService {
 

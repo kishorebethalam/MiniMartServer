@@ -124,7 +124,11 @@
               <artifactId>slf4j-api</artifactId>
               <version>1.7.2</version>
           </dependency>
-          
+          <dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-log4j12</artifactId>
+	<version>1.7.2</version>
+</dependency>
           <!-- Jetty -->
           <dependency>
               <groupId>org.eclipse.jetty</groupId>
@@ -175,6 +179,15 @@
                     </manifest>
                 </archive>
             </configuration>
+            <executions>
+				<execution>
+					<id>make-a-jar</id>
+					<phase>compile</phase>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
         </plugin>
         <!-- The maven app assembler plugin will generate a script that sets up the classpath and runs your project -->
         <plugin>
