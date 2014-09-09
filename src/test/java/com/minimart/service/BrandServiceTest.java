@@ -8,8 +8,15 @@ import org.junit.Test;
 
 import com.minimart.model.Brand;
 import com.minimart.model.POSModel;
+import com.minimart.restclient.BrandRESTClient;
 import com.minimart.service.impl.BrandServiceImpl;
 import com.minimart.TestDataUtil;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.GenericType;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
 
 public class BrandServiceTest {
 
@@ -17,6 +24,14 @@ public class BrandServiceTest {
 	public BrandServiceTest() {
 		// TODO Auto-generated constructor stub
 		service = new BrandServiceImpl();
+	}
+	
+	@Test
+	public void testRest(){
+		BrandRESTClient restClient = new BrandRESTClient("http://localhost:8080");
+		Brand brand = restClient.getBrand(1);
+		Brand brandFromService = service.getBrandById(1);
+		assertEquals(brand, brandFromService);
 	}
 	
 	@Test

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 public abstract class POSModel {
 
+	
 	public POSModel() {
 		// TODO Auto-generated constructor stub
 	}

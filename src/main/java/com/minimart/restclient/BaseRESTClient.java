@@ -2,6 +2,7 @@ package com.minimart.restclient;
 
 import javax.ws.rs.HttpMethod;
 
+import com.google.common.base.Joiner;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -34,8 +35,8 @@ public class BaseRESTClient {
                 JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         Client client = Client.create(clientConfig);
 		
-		
-	    WebResource webResource = client.resource("http://localhost:8080/" + relativeUrl);
+        String fullUrl =  this.getBaseUrl()  + "/" + relativeUrl;
+	    WebResource webResource = client.resource(fullUrl);
 	    
 	    ClientResponse response = null;
 	    if (method.equals(HttpMethod.POST)  ){
