@@ -2,6 +2,7 @@ package com.minimart.dao;
 
 import java.util.List;
 import com.minimart.model.InventoryItem;
+import com.minimart.dto.InventoryItemDTO;
 
 public interface InventoryItemDAO {
 
@@ -11,4 +12,6 @@ public interface InventoryItemDAO {
 	public InventoryItem getInventoryItemById(int id);
 	public List<InventoryItem> getAllInventoryItems();
 	public List<InventoryItem> getInventoryItemsByCriteria(Object criterion);
+	public InventoryItemDTO getInventoryItemDTOById(int id);
+	public List<InventoryItemDTO> getAllInventoryItemDTOs();
 }

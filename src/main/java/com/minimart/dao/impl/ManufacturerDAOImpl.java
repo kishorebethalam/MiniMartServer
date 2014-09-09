@@ -11,7 +11,7 @@ import com.minimart.model.Manufacturer;
 import com.minimart.dao.ManufacturerDAO;
 import com.minimart.dao.util.DAOException;
 import com.minimart.dao.util.DBUtil;
-
+import com.minimart.dto.ManufacturerDTO;
 
 public class ManufacturerDAOImpl implements ManufacturerDAO {
 	
@@ -138,6 +138,61 @@ public class ManufacturerDAOImpl implements ManufacturerDAO {
             	Manufacturer manufacturer = new Manufacturer();
             	manufacturer.loadFromResultSet(resultSet);
             	results.add(manufacturer);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return results ;
+	}
+	
+	public ManufacturerDTO getManufacturerDTOById(int id){
+	
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        ManufacturerDTO manufacturerDTO = null;
+
+        String query = DBUtil.getQuery("MANUFACTURER_GET_DTO_BY_ID");
+        Object[] parameters = {id};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+            	manufacturerDTO = new ManufacturerDTO();
+            	manufacturerDTO.loadFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return manufacturerDTO ;
+	}
+	
+	public List<ManufacturerDTO> getAllManufacturerDTOs(){
+		List<ManufacturerDTO> results  = new ArrayList<ManufacturerDTO>(); 
+		
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        String query = DBUtil.getQuery("MANUFACTURER_GET_DTO_ALL");
+        
+        Object[] parameters = {};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	ManufacturerDTO manufacturerDTO = new ManufacturerDTO();
+            	manufacturerDTO.loadFromResultSet(resultSet);
+            	results.add(manufacturerDTO);
             }
         } catch (SQLException e) {
             throw new DAOException(e);

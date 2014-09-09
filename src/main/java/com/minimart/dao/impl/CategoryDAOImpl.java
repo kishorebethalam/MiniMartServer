@@ -11,7 +11,7 @@ import com.minimart.model.Category;
 import com.minimart.dao.CategoryDAO;
 import com.minimart.dao.util.DAOException;
 import com.minimart.dao.util.DBUtil;
-
+import com.minimart.dto.CategoryDTO;
 
 public class CategoryDAOImpl implements CategoryDAO {
 	
@@ -138,6 +138,61 @@ public class CategoryDAOImpl implements CategoryDAO {
             	Category category = new Category();
             	category.loadFromResultSet(resultSet);
             	results.add(category);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return results ;
+	}
+	
+	public CategoryDTO getCategoryDTOById(int id){
+	
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        CategoryDTO categoryDTO = null;
+
+        String query = DBUtil.getQuery("CATEGORY_GET_DTO_BY_ID");
+        Object[] parameters = {id};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+            	categoryDTO = new CategoryDTO();
+            	categoryDTO.loadFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return categoryDTO ;
+	}
+	
+	public List<CategoryDTO> getAllCategoryDTOs(){
+		List<CategoryDTO> results  = new ArrayList<CategoryDTO>(); 
+		
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        String query = DBUtil.getQuery("CATEGORY_GET_DTO_ALL");
+        
+        Object[] parameters = {};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	CategoryDTO categoryDTO = new CategoryDTO();
+            	categoryDTO.loadFromResultSet(resultSet);
+            	results.add(categoryDTO);
             }
         } catch (SQLException e) {
             throw new DAOException(e);

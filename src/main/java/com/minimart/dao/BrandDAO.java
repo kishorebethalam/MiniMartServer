@@ -2,6 +2,7 @@ package com.minimart.dao;
 
 import java.util.List;
 import com.minimart.model.Brand;
+import com.minimart.dto.BrandDTO;
 
 public interface BrandDAO {
 
@@ -11,4 +12,6 @@ public interface BrandDAO {
 	public Brand getBrandById(int id);
 	public List<Brand> getAllBrands();
 	public List<Brand> getBrandsByCriteria(Object criterion);
+	public BrandDTO getBrandDTOById(int id);
+	public List<BrandDTO> getAllBrandDTOs();
 }

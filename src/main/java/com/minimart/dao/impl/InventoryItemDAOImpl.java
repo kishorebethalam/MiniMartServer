@@ -11,7 +11,7 @@ import com.minimart.model.InventoryItem;
 import com.minimart.dao.InventoryItemDAO;
 import com.minimart.dao.util.DAOException;
 import com.minimart.dao.util.DBUtil;
-
+import com.minimart.dto.InventoryItemDTO;
 
 public class InventoryItemDAOImpl implements InventoryItemDAO {
 	
@@ -138,6 +138,61 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
             	InventoryItem inventoryItem = new InventoryItem();
             	inventoryItem.loadFromResultSet(resultSet);
             	results.add(inventoryItem);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return results ;
+	}
+	
+	public InventoryItemDTO getInventoryItemDTOById(int id){
+	
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        InventoryItemDTO inventoryItemDTO = null;
+
+        String query = DBUtil.getQuery("INVENTORY_ITEM_GET_DTO_BY_ID");
+        Object[] parameters = {id};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+            	inventoryItemDTO = new InventoryItemDTO();
+            	inventoryItemDTO.loadFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return inventoryItemDTO ;
+	}
+	
+	public List<InventoryItemDTO> getAllInventoryItemDTOs(){
+		List<InventoryItemDTO> results  = new ArrayList<InventoryItemDTO>(); 
+		
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        String query = DBUtil.getQuery("INVENTORY_ITEM_GET_DTO_ALL");
+        
+        Object[] parameters = {};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	InventoryItemDTO inventoryItemDTO = new InventoryItemDTO();
+            	inventoryItemDTO.loadFromResultSet(resultSet);
+            	results.add(inventoryItemDTO);
             }
         } catch (SQLException e) {
             throw new DAOException(e);

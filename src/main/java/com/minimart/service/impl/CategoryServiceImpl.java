@@ -16,6 +16,7 @@ import com.minimart.model.Category;
 import com.minimart.service.CategoryService;
 import com.minimart.dao.CategoryDAO;
 import com.minimart.dao.impl.CategoryDAOImpl;
+import com.minimart.dto.CategoryDTO;
 
 @Path("category")
 public class CategoryServiceImpl implements CategoryService {
@@ -59,6 +60,19 @@ public class CategoryServiceImpl implements CategoryService {
 		return this.categoryDAO.getAllCategories();
 	}
 	
+	@Path("dto/{id}")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public CategoryDTO getCategoryDTOById(@PathParam("id") int id){
+		return this.categoryDAO.getCategoryDTOById(id);
+	}
+	
+	@Path("dto/all")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public List<CategoryDTO> getAllCategoryDTOs(){
+		return this.categoryDAO.getAllCategoryDTOs();
+	}
 	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)

@@ -35,13 +35,13 @@ public class Category extends POSModel implements java.io.Serializable {
 	}
 
 	@POSFieldAnnotation(dbColumnName = "id")
-	private Integer id;
+	protected Integer id;
 
 	@POSFieldAnnotation(dbColumnName = "parent_category_id")
-	private Integer parentCategoryId;
+	protected Integer parentCategoryId;
 	
 	@POSFieldAnnotation(dbColumnName = "name")
-	private String name;
+	protected String name;
 
 	/**
 	 * @return the id

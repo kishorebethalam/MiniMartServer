@@ -16,6 +16,7 @@ import com.minimart.model.Manufacturer;
 import com.minimart.service.ManufacturerService;
 import com.minimart.dao.ManufacturerDAO;
 import com.minimart.dao.impl.ManufacturerDAOImpl;
+import com.minimart.dto.ManufacturerDTO;
 
 @Path("manufacturer")
 public class ManufacturerServiceImpl implements ManufacturerService {
@@ -59,6 +60,19 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 		return this.manufacturerDAO.getAllManufacturers();
 	}
 	
+	@Path("dto/{id}")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public ManufacturerDTO getManufacturerDTOById(@PathParam("id") int id){
+		return this.manufacturerDAO.getManufacturerDTOById(id);
+	}
+	
+	@Path("dto/all")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public List<ManufacturerDTO> getAllManufacturerDTOs(){
+		return this.manufacturerDAO.getAllManufacturerDTOs();
+	}
 	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)

@@ -16,6 +16,7 @@ import com.minimart.model.Product;
 import com.minimart.service.ProductService;
 import com.minimart.dao.ProductDAO;
 import com.minimart.dao.impl.ProductDAOImpl;
+import com.minimart.dto.ProductDTO;
 
 @Path("product")
 public class ProductServiceImpl implements ProductService {
@@ -59,6 +60,19 @@ public class ProductServiceImpl implements ProductService {
 		return this.productDAO.getAllProducts();
 	}
 	
+	@Path("dto/{id}")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public ProductDTO getProductDTOById(@PathParam("id") int id){
+		return this.productDAO.getProductDTOById(id);
+	}
+	
+	@Path("dto/all")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public List<ProductDTO> getAllProductDTOs(){
+		return this.productDAO.getAllProductDTOs();
+	}
 	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)

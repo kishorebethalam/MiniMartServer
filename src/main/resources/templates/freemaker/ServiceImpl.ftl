@@ -16,6 +16,7 @@ import ${modelPackage}.${className};
 import ${servicePackage}.${className}Service;
 import ${daoPackage}.${className}DAO;
 import ${daoImplPackage}.${className}DAOImpl;
+import ${dtoPackage}.${className}DTO;
 
 @Path("${variableName}")
 public class ${className}ServiceImpl implements ${className}Service {
@@ -59,6 +60,19 @@ public class ${className}ServiceImpl implements ${className}Service {
 		return this.${variableName}DAO.getAll${classNamePlural}();
 	}
 	
+	@Path("dto/{id}")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public ${className}DTO get${className}DTOById(@PathParam("id") int id){
+		return this.${variableName}DAO.get${className}DTOById(id);
+	}
+	
+	@Path("dto/all")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public List<${className}DTO> getAll${className}DTOs(){
+		return this.${variableName}DAO.getAll${className}DTOs();
+	}
 	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)

@@ -36,13 +36,13 @@ public class Brand extends POSModel implements java.io.Serializable {
 	}
 
 	@POSFieldAnnotation(dbColumnName = "id")
-	private Integer id;
+	protected Integer id;
 
 	@POSFieldAnnotation(dbColumnName = "manufacturer_id")
-	private Integer manufacturerId;
+	protected Integer manufacturerId;
 
 	@POSFieldAnnotation(dbColumnName = "name")
-	private String name;
+	protected String name;
 
 	/**
 	 * @return the id

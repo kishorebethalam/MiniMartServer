@@ -16,6 +16,7 @@ import com.minimart.model.InventoryItem;
 import com.minimart.service.InventoryItemService;
 import com.minimart.dao.InventoryItemDAO;
 import com.minimart.dao.impl.InventoryItemDAOImpl;
+import com.minimart.dto.InventoryItemDTO;
 
 @Path("inventoryItem")
 public class InventoryItemServiceImpl implements InventoryItemService {
@@ -59,6 +60,19 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 		return this.inventoryItemDAO.getAllInventoryItems();
 	}
 	
+	@Path("dto/{id}")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public InventoryItemDTO getInventoryItemDTOById(@PathParam("id") int id){
+		return this.inventoryItemDAO.getInventoryItemDTOById(id);
+	}
+	
+	@Path("dto/all")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public List<InventoryItemDTO> getAllInventoryItemDTOs(){
+		return this.inventoryItemDAO.getAllInventoryItemDTOs();
+	}
 	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)

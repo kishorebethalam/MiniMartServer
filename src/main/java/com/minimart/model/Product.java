@@ -52,31 +52,31 @@ public class Product extends POSModel implements java.io.Serializable {
 	}
 
 	@POSFieldAnnotation(dbColumnName = "id")
-	private Integer id;
+	protected Integer id;
 
 	@POSFieldAnnotation(dbColumnName = "product_master_id")
-	private Integer productMasterId;
+	protected Integer productMasterId;
 
 	@POSFieldAnnotation(dbColumnName = "measurement_category")
-	private String measurementCategory;
+	protected String measurementCategory;
 
 	@POSFieldAnnotation(dbColumnName = "measurement_quantity")
-	private int measurementQuantity;
+	protected int measurementQuantity;
 
 	@POSFieldAnnotation(dbColumnName = "mrp")
-	private float mrp;
+	protected float mrp;
 
 	@POSFieldAnnotation(dbColumnName = "sell_price")
-	private float sellPrice;
+	protected float sellPrice;
 
 	@POSFieldAnnotation(dbColumnName = "buy_price")
-	private float buyPrice;
+	protected float buyPrice;
 
 	@POSFieldAnnotation(dbColumnName = "reorder_volume")
-	private int reorderVolume;
+	protected int reorderVolume;
 
 	@POSFieldAnnotation(dbColumnName = "reorder_frequency")
-	private String reorderFrequency;
+	protected String reorderFrequency;
 
 	/**
 	 * @return the id

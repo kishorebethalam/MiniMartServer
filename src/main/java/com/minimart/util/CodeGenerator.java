@@ -13,6 +13,8 @@ import java.util.Map;
 
 import org.atteo.evo.inflector.English;
 
+import com.minimart.annotation.DTOQueryAnnotation;
+import com.minimart.annotation.POSDTOFieldAnnotation;
 import com.minimart.annotation.POSFieldAnnotation;
 import com.minimart.annotation.POSModelAnnotation;
 import com.minimart.model.POSModel;
@@ -36,6 +38,7 @@ public class CodeGenerator {
 	
 	private String serviceTestPackage;
 	private String restPackage;
+	private String dtoPackage;
 
 
 	/**
@@ -56,6 +59,7 @@ public class CodeGenerator {
 		this.daoImplPackage = this.basePackage + ".dao.impl";
 		this.serviceTestPackage = this.basePackage + ".service";
 		this.restPackage = this.basePackage + ".restclient";
+		this.dtoPackage = this.basePackage + ".dto";
 	}
 
 	/**
@@ -92,6 +96,7 @@ public class CodeGenerator {
 		data.put("daoImplPackage", this.daoImplPackage);
 		data.put("serviceTestPackage", this.serviceTestPackage);
 		data.put("restPackage", this.restPackage);
+		data.put("dtoPackage", this.dtoPackage);
 		
 		
 		for (String modelClass : modelClassesNames) {
@@ -255,6 +260,14 @@ public class CodeGenerator {
 			QueryGenerator.generateDeleteQuery(dbTableName, fieldNames);
 			QueryGenerator.generateGetByIdQuery(dbTableName, fieldNames);
 			QueryGenerator.generateGetAllQuery(dbTableName, fieldNames);
+			
+			@SuppressWarnings("unchecked")
+			Class<? extends POSModel> dtoClass = (Class<? extends POSModel>) Class
+					.forName(this.dtoPackage + "." + className + "DTO");
+			
+			List<String[]> dtoFieldsInfo = getDTOFieldsInfo(dtoClass);
+			QueryGenerator.generateGetDTOByIdQuery(dtoClass, dbTableName, fieldNames, dtoFieldsInfo);
+			QueryGenerator.generateGetAllDTOQuery(dtoClass, dbTableName, fieldNames, dtoFieldsInfo);
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -290,7 +303,55 @@ public class CodeGenerator {
 		}
 		return fieldsArray;
 	}
+	
+	private List<String[]> getDTOFieldsInfo(Class<? extends POSModel> modelClass) {
+		List<String[]> fieldsArray = new ArrayList<String[]>();
 
+		try {
+
+
+			for (Field field : CodeGenerator.getAllFields(modelClass)) {
+				if (field.isAnnotationPresent(POSDTOFieldAnnotation.class)) {
+					try {
+						POSDTOFieldAnnotation fieldAnnotation = field
+								.getAnnotation(POSDTOFieldAnnotation.class);
+						String referenceTable = fieldAnnotation.referenceTable();
+						String referenceTitleField = fieldAnnotation.referenceTitleField();
+						String referingField = fieldAnnotation.referingField();
+						
+						String[] fieldInfo = new String[4];
+						fieldInfo[0] = referenceTable;
+						fieldInfo[1] = referenceTitleField;
+						fieldInfo[2] = referingField;
+						fieldInfo[3] = field.getName();
+
+						fieldsArray.add(fieldInfo);
+					} catch (Exception exp) {
+						exp.printStackTrace();
+					}
+				}
+			}
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
+		return fieldsArray;
+	}
+
+	public static DTOQueryAnnotation getHardCodedQueriesForDTO(Class<? extends POSModel> modelClass)
+			throws ClassNotFoundException {
+
+		DTOQueryAnnotation modelAnnotation = null;
+
+		if (modelClass.isAnnotationPresent(DTOQueryAnnotation.class)) {
+			try {
+				modelAnnotation = modelClass
+						.getAnnotation(DTOQueryAnnotation.class);
+			} catch (Exception exp) {
+				exp.printStackTrace();
+			}
+		}
+		return modelAnnotation;
+	}
 	private String getTableName(Class<? extends POSModel> modelClass)
 			throws ClassNotFoundException {
 
@@ -336,7 +397,7 @@ public class CodeGenerator {
 
 		String filePath = this.testFolderPath + packageName.replace(".", "/");
 		
-		System.out.println("Generating " + filePath);
+//		System.out.println("Generating " + filePath);
 		
 		File parentDirectory = new File(filePath); // will create a sub folder
 													// for each user (currently

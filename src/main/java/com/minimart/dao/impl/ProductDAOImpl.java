@@ -11,7 +11,7 @@ import com.minimart.model.Product;
 import com.minimart.dao.ProductDAO;
 import com.minimart.dao.util.DAOException;
 import com.minimart.dao.util.DBUtil;
-
+import com.minimart.dto.ProductDTO;
 
 public class ProductDAOImpl implements ProductDAO {
 	
@@ -138,6 +138,61 @@ public class ProductDAOImpl implements ProductDAO {
             	Product product = new Product();
             	product.loadFromResultSet(resultSet);
             	results.add(product);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return results ;
+	}
+	
+	public ProductDTO getProductDTOById(int id){
+	
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        ProductDTO productDTO = null;
+
+        String query = DBUtil.getQuery("PRODUCT_GET_DTO_BY_ID");
+        Object[] parameters = {id};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+            	productDTO = new ProductDTO();
+            	productDTO.loadFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return productDTO ;
+	}
+	
+	public List<ProductDTO> getAllProductDTOs(){
+		List<ProductDTO> results  = new ArrayList<ProductDTO>(); 
+		
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        String query = DBUtil.getQuery("PRODUCT_GET_DTO_ALL");
+        
+        Object[] parameters = {};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	ProductDTO productDTO = new ProductDTO();
+            	productDTO.loadFromResultSet(resultSet);
+            	results.add(productDTO);
             }
         } catch (SQLException e) {
             throw new DAOException(e);

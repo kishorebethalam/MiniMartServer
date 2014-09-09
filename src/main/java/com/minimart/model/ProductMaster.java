@@ -40,16 +40,16 @@ public class ProductMaster extends POSModel implements java.io.Serializable {
 	}
 
 	@POSFieldAnnotation(dbColumnName = "id")
-	private Integer id;
+	protected Integer id;
 
 	@POSFieldAnnotation(dbColumnName = "brand_id")
-	private Integer brandId;
+	protected Integer brandId;
 
 	@POSFieldAnnotation(dbColumnName = "category_id")
-	private Integer categoryId;
+	protected Integer categoryId;
 
 	@POSFieldAnnotation(dbColumnName = "name")
-	private String name;
+	protected String name;
 
 	/**
 	 * @return the id

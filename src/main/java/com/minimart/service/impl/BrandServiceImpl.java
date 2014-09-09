@@ -16,6 +16,7 @@ import com.minimart.model.Brand;
 import com.minimart.service.BrandService;
 import com.minimart.dao.BrandDAO;
 import com.minimart.dao.impl.BrandDAOImpl;
+import com.minimart.dto.BrandDTO;
 
 @Path("brand")
 public class BrandServiceImpl implements BrandService {
@@ -59,6 +60,19 @@ public class BrandServiceImpl implements BrandService {
 		return this.brandDAO.getAllBrands();
 	}
 	
+	@Path("dto/{id}")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public BrandDTO getBrandDTOById(@PathParam("id") int id){
+		return this.brandDAO.getBrandDTOById(id);
+	}
+	
+	@Path("dto/all")
+	@GET
+	@Produces( MediaType.APPLICATION_JSON)
+	public List<BrandDTO> getAllBrandDTOs(){
+		return this.brandDAO.getAllBrandDTOs();
+	}
 	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)

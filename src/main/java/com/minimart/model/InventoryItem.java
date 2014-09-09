@@ -46,25 +46,25 @@ public class InventoryItem extends POSModel implements java.io.Serializable {
 	}
 
 	@POSFieldAnnotation(dbColumnName = "id")
-	private Integer id;
+	protected Integer id;
 
 	@POSFieldAnnotation(dbColumnName = "product_id")
-	private Integer productId;
+	protected Integer productId;
 
 	@POSFieldAnnotation(dbColumnName = "tracking_code")
-	private String trackingCode;
+	protected String trackingCode;
 	
 	@POSFieldAnnotation(dbColumnName = "quantity")
-	private int quantity;
+	protected int quantity;
 
 	@POSFieldAnnotation(dbColumnName = "received_date")
-	private Date receivedDate;
+	protected Date receivedDate;
 
 	@POSFieldAnnotation(dbColumnName = "expiry_date")
-	private Date expiryDate;
+	protected Date expiryDate;
 	
 	@POSFieldAnnotation(dbColumnName = "promotional_offer")
-	private String promotionalOffer;
+	protected String promotionalOffer;
 
 	/**
 	 * @return the id

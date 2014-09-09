@@ -11,7 +11,7 @@ import ${modelPackage}.${className};
 import ${daoPackage}.${className}DAO;
 import ${daoPackage}.util.DAOException;
 import ${daoPackage}.util.DBUtil;
-
+import ${dtoPackage}.${className}DTO;
 
 public class ${className}DAOImpl implements ${className}DAO {
 	
@@ -138,6 +138,61 @@ public class ${className}DAOImpl implements ${className}DAO {
             	${className} ${variableName} = new ${className}();
             	${variableName}.loadFromResultSet(resultSet);
             	results.add(${variableName});
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return results ;
+	}
+	
+	public ${className}DTO get${className}DTOById(int id){
+	
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        ${className}DTO ${variableName}DTO = null;
+
+        String query = DBUtil.getQuery("${dbTableName}_GET_DTO_BY_ID");
+        Object[] parameters = {id};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+            	${variableName}DTO = new ${className}DTO();
+            	${variableName}DTO.loadFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return ${variableName}DTO ;
+	}
+	
+	public List<${className}DTO> getAll${className}DTOs(){
+		List<${className}DTO> results  = new ArrayList<${className}DTO>(); 
+		
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        String query = DBUtil.getQuery("${dbTableName}_GET_DTO_ALL");
+        
+        Object[] parameters = {};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	${className}DTO ${variableName}DTO = new ${className}DTO();
+            	${variableName}DTO.loadFromResultSet(resultSet);
+            	results.add(${variableName}DTO);
             }
         } catch (SQLException e) {
             throw new DAOException(e);
