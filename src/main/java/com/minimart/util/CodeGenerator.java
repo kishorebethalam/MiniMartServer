@@ -414,8 +414,6 @@ public class CodeGenerator {
 		fileWriter.close();
 	}
 	
-	
-
 	public static List<Field> getAllFields(Class<?> type) {
 		List<Field> fields = new ArrayList<Field>();
 		for (Class<?> c = type; c != null; c = c.getSuperclass()) {

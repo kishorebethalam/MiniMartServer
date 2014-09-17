@@ -36,14 +36,16 @@ public class ProductMasterServiceImpl implements ProductMasterService {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void updateProductMaster(ProductMaster productMaster){
+	public int updateProductMaster(ProductMaster productMaster){
 		this.productMasterDAO.updateProductMaster(productMaster);
+		return productMaster.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteProductMaster(@PathParam("id") int id){
+	public int deleteProductMaster(@PathParam("id") int id){
 		this.productMasterDAO.deleteProductMaster(id);
+		return id;
 	}
 	
 	@Path("{id}")

@@ -14,6 +14,7 @@ import java.util.Properties;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.beanutils.converters.DateTimeConverter;
+import org.eclipse.jetty.util.log.Log;
 
 public final class DBUtil {
 
@@ -57,6 +58,7 @@ public final class DBUtil {
 				returnGeneratedKeys ? Statement.RETURN_GENERATED_KEYS
 						: Statement.NO_GENERATED_KEYS);
 		setValues(preparedStatement, values);
+		System.out.println(preparedStatement.toString());
 		return preparedStatement;
 	}
 

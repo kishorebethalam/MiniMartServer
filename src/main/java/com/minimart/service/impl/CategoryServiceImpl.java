@@ -36,14 +36,16 @@ public class CategoryServiceImpl implements CategoryService {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void updateCategory(Category category){
+	public int updateCategory(Category category){
 		this.categoryDAO.updateCategory(category);
+		return category.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteCategory(@PathParam("id") int id){
+	public int deleteCategory(@PathParam("id") int id){
 		this.categoryDAO.deleteCategory(id);
+		return id;
 	}
 	
 	@Path("{id}")

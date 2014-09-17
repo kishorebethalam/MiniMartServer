@@ -168,5 +168,12 @@ public class Category extends POSModel implements java.io.Serializable {
 		return true;
 	}
 
-	
+	@Override
+	public final boolean verifyRequiredFields() {
+		if (this.name != null && this.name.trim().length() > 0 
+				&& this.parentCategoryId != 0){
+			return true;
+		}
+		return false;
+	}
 }

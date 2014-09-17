@@ -145,5 +145,13 @@ public class Manufacturer extends POSModel implements java.io.Serializable {
 		return "Manufacturer [id=" + id + ", name=" + name + "]";
 	}
 
+	@Override
+	public final boolean verifyRequiredFields() {
+		System.out.println(this.toString());
+		if (this.name != null && this.name.trim().length() > 0 ){
+			return true;
+		}
+		return false;
+	}
 	
 }

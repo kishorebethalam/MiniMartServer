@@ -36,14 +36,16 @@ public class ProductServiceImpl implements ProductService {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void updateProduct(Product product){
+	public int updateProduct(Product product){
 		this.productDAO.updateProduct(product);
+		return product.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteProduct(@PathParam("id") int id){
+	public int deleteProduct(@PathParam("id") int id){
 		this.productDAO.deleteProduct(id);
+		return id;
 	}
 	
 	@Path("{id}")

@@ -7,8 +7,8 @@ import com.minimart.dto.CategoryDTO;
 public interface CategoryService {
 
 	public int addCategory(Category category);
-	public void updateCategory(Category category);
-	public void deleteCategory(int id);
+	public int updateCategory(Category category);
+	public int deleteCategory(int id);
 	public Category getCategoryById(int id);
 	public List<Category> getAllCategories();
 	public List<Category> getCategoriesByCriteria(Object criterion);

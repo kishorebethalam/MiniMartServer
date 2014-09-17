@@ -19,7 +19,7 @@ public class InventoryItemDTO extends InventoryItem {
 
 	protected String productName;
 	protected String measurementCategory;
-	protected String measurementQuantity;
+	protected Integer measurementQuantity;
 
 	/**
 	 * @return the productName
@@ -55,14 +55,14 @@ public class InventoryItemDTO extends InventoryItem {
 	/**
 	 * @return the measurementQuantity
 	 */
-	public String getMeasurementQuantity() {
+	public Integer getMeasurementQuantity() {
 		return measurementQuantity;
 	}
 
 	/**
 	 * @param measurementQuantity the measurementQuantity to set
 	 */
-	public void setMeasurementQuantity(String measurementQuantity) {
+	public void setMeasurementQuantity(Integer measurementQuantity) {
 		this.measurementQuantity = measurementQuantity;
 	}
 
@@ -85,7 +85,7 @@ public class InventoryItemDTO extends InventoryItem {
 	public InventoryItemDTO(Integer id, Integer productId, String trackingCode,
 			int quantity, Date receivedDate, Date expiryDate,
 			String promotionalOffer, String productName,
-			String measurementCategory, String measurementQuantity) {
+			String measurementCategory, int measurementQuantity) {
 		super(id, productId, trackingCode, quantity, receivedDate, expiryDate,
 				promotionalOffer);
 		this.productName = productName;
@@ -98,7 +98,7 @@ public class InventoryItemDTO extends InventoryItem {
 		super.loadFromResultSet(resultSet);
 		this.productName = resultSet.getString("productName");
 		this.measurementCategory = resultSet.getString("measurementCategory");
-		this.measurementQuantity = resultSet.getString("measurementQuantity");
+		this.measurementQuantity = resultSet.getInt("measurementQuantity");
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.HttpMethod;
 
 import com.minimart.model.InventoryItem;
+import com.minimart.dto.InventoryItemDTO;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 
@@ -22,11 +23,14 @@ public class InventoryItemRESTClient  extends BaseRESTClient {
 		return id;
 	}
 	
-	public int updateInventoryItem(InventoryItem inventoryItem) {
+	public void updateInventoryItem(InventoryItem inventoryItem) {
 
 		ClientResponse response = this.processRequest("inventoryItem/update", HttpMethod.PUT, inventoryItem);
-		Integer id = response.getEntity(Integer.class);
-		return id;
+	}
+	
+	public void deleteInventoryItem(InventoryItem inventoryItem) {
+
+		ClientResponse response = this.processRequest("inventoryItem/" + inventoryItem.getId(), HttpMethod.DELETE, null);
 	}
 	
 	public InventoryItem getInventoryItem(int id) {
@@ -40,6 +44,20 @@ public class InventoryItemRESTClient  extends BaseRESTClient {
 
 		ClientResponse response = this.processRequest("inventoryItem/all", HttpMethod.GET, null);
 		return response.getEntity(new GenericType<List<InventoryItem>>() { });
+		 
+	}
+	
+	public InventoryItemDTO getInventoryItemDTO(int id) {
+
+		ClientResponse response = this.processRequest("inventoryItem/dto/" + id , HttpMethod.GET, null);
+		InventoryItemDTO inventoryItemDTO = response.getEntity(InventoryItemDTO.class);
+		return inventoryItemDTO;
+	}
+	
+	public List<InventoryItemDTO> getAllInventoryItemDTOs() {
+
+		ClientResponse response = this.processRequest("inventoryItem/dto/all", HttpMethod.GET, null);
+		return response.getEntity(new GenericType<List<InventoryItemDTO>>() { });
 		 
 	}
 

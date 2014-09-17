@@ -12,5 +12,6 @@ public abstract class POSModel {
 	
 	public abstract void loadFromResultSet(ResultSet resultSet) throws SQLException;
 	public abstract Object[] toObjectArray(boolean includeId);
+	public abstract boolean verifyRequiredFields();
 
 }

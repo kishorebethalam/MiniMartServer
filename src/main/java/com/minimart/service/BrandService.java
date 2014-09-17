@@ -7,8 +7,8 @@ import com.minimart.dto.BrandDTO;
 public interface BrandService {
 
 	public int addBrand(Brand brand);
-	public void updateBrand(Brand brand);
-	public void deleteBrand(int id);
+	public int updateBrand(Brand brand);
+	public int deleteBrand(int id);
 	public Brand getBrandById(int id);
 	public List<Brand> getAllBrands();
 	public List<Brand> getBrandsByCriteria(Object criterion);

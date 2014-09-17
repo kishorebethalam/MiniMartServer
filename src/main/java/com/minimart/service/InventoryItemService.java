@@ -7,8 +7,8 @@ import com.minimart.dto.InventoryItemDTO;
 public interface InventoryItemService {
 
 	public int addInventoryItem(InventoryItem inventoryItem);
-	public void updateInventoryItem(InventoryItem inventoryItem);
-	public void deleteInventoryItem(int id);
+	public int updateInventoryItem(InventoryItem inventoryItem);
+	public int deleteInventoryItem(int id);
 	public InventoryItem getInventoryItemById(int id);
 	public List<InventoryItem> getAllInventoryItems();
 	public List<InventoryItem> getInventoryItemsByCriteria(Object criterion);

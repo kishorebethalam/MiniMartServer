@@ -36,14 +36,16 @@ public class BrandServiceImpl implements BrandService {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void updateBrand(Brand brand){
+	public int updateBrand(Brand brand){
 		this.brandDAO.updateBrand(brand);
+		return brand.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteBrand(@PathParam("id") int id){
+	public int deleteBrand(@PathParam("id") int id){
 		this.brandDAO.deleteBrand(id);
+		return id;
 	}
 	
 	@Path("{id}")

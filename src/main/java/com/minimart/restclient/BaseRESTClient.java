@@ -55,7 +55,7 @@ public class BaseRESTClient {
 	    	response = webResource.accept("application/json")
 					.type("application/json").delete(ClientResponse.class);
 	    }
-	    if (response.getStatus() != 200) {
+	    if (!(response.getStatus() == 200 || response.getStatus() == 204)) {
 			throw new RuntimeException("Failed : HTTP error code : "
 					+ response.getStatus());
 		}

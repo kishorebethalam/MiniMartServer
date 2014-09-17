@@ -36,14 +36,16 @@ public class ${className}ServiceImpl implements ${className}Service {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void update${className}(${className} ${variableName}){
+	public int update${className}(${className} ${variableName}){
 		this.${variableName}DAO.update${className}(${variableName});
+		return ${variableName}.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void delete${className}(@PathParam("id") int id){
+	public int delete${className}(@PathParam("id") int id){
 		this.${variableName}DAO.delete${className}(id);
+		return id;
 	}
 	
 	@Path("{id}")

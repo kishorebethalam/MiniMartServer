@@ -185,4 +185,13 @@ public class Brand extends POSModel implements java.io.Serializable {
 		
 	}
 
+	@Override
+	public final boolean verifyRequiredFields() {
+		if (this.name != null && this.name.trim().length() > 0 
+				&& this.manufacturerId != 0){
+			return true;
+		}
+		return false;
+	}
+
 }

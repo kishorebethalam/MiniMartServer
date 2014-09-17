@@ -353,5 +353,20 @@ public class Product extends POSModel implements java.io.Serializable {
 				+ reorderFrequency + "]";
 	}
 	
+	@Override
+	public final boolean verifyRequiredFields() {
+		if (this.measurementCategory != null && this.measurementCategory.trim().length() > 0
+				&& this.reorderFrequency != null && this.reorderFrequency.trim().length() > 0
+				&& this.productMasterId != 0 
+				&& this.measurementQuantity != 0
+				&& this.mrp != 0
+				&& this.buyPrice != 0
+				&& this.sellPrice != 0
+				&& this.reorderVolume != 0
+				){
+			return true;
+		}
+		return false;
+	}
 	
 }

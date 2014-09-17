@@ -36,14 +36,16 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void updateManufacturer(Manufacturer manufacturer){
+	public int updateManufacturer(Manufacturer manufacturer){
 		this.manufacturerDAO.updateManufacturer(manufacturer);
+		return manufacturer.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteManufacturer(@PathParam("id") int id){
+	public int deleteManufacturer(@PathParam("id") int id){
 		this.manufacturerDAO.deleteManufacturer(id);
+		return id;
 	}
 	
 	@Path("{id}")

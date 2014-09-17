@@ -36,14 +36,16 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public void updateInventoryItem(InventoryItem inventoryItem){
+	public int updateInventoryItem(InventoryItem inventoryItem){
 		this.inventoryItemDAO.updateInventoryItem(inventoryItem);
+		return inventoryItem.getId();
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteInventoryItem(@PathParam("id") int id){
+	public int deleteInventoryItem(@PathParam("id") int id){
 		this.inventoryItemDAO.deleteInventoryItem(id);
+		return id;
 	}
 	
 	@Path("{id}")

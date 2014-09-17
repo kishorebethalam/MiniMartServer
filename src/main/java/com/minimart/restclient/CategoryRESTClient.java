@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.HttpMethod;
 
 import com.minimart.model.Category;
+import com.minimart.dto.CategoryDTO;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 
@@ -22,11 +23,14 @@ public class CategoryRESTClient  extends BaseRESTClient {
 		return id;
 	}
 	
-	public int updateCategory(Category category) {
+	public void updateCategory(Category category) {
 
 		ClientResponse response = this.processRequest("category/update", HttpMethod.PUT, category);
-		Integer id = response.getEntity(Integer.class);
-		return id;
+	}
+	
+	public void deleteCategory(Category category) {
+
+		ClientResponse response = this.processRequest("category/" + category.getId(), HttpMethod.DELETE, null);
 	}
 	
 	public Category getCategory(int id) {
@@ -40,6 +44,20 @@ public class CategoryRESTClient  extends BaseRESTClient {
 
 		ClientResponse response = this.processRequest("category/all", HttpMethod.GET, null);
 		return response.getEntity(new GenericType<List<Category>>() { });
+		 
+	}
+	
+	public CategoryDTO getCategoryDTO(int id) {
+
+		ClientResponse response = this.processRequest("category/dto/" + id , HttpMethod.GET, null);
+		CategoryDTO categoryDTO = response.getEntity(CategoryDTO.class);
+		return categoryDTO;
+	}
+	
+	public List<CategoryDTO> getAllCategoryDTOs() {
+
+		ClientResponse response = this.processRequest("category/dto/all", HttpMethod.GET, null);
+		return response.getEntity(new GenericType<List<CategoryDTO>>() { });
 		 
 	}
 

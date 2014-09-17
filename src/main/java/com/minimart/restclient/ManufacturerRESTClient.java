@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.HttpMethod;
 
 import com.minimart.model.Manufacturer;
+import com.minimart.dto.ManufacturerDTO;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 
@@ -22,11 +23,14 @@ public class ManufacturerRESTClient  extends BaseRESTClient {
 		return id;
 	}
 	
-	public int updateManufacturer(Manufacturer manufacturer) {
+	public void updateManufacturer(Manufacturer manufacturer) {
 
 		ClientResponse response = this.processRequest("manufacturer/update", HttpMethod.PUT, manufacturer);
-		Integer id = response.getEntity(Integer.class);
-		return id;
+	}
+	
+	public void deleteManufacturer(Manufacturer manufacturer) {
+
+		ClientResponse response = this.processRequest("manufacturer/" + manufacturer.getId(), HttpMethod.DELETE, null);
 	}
 	
 	public Manufacturer getManufacturer(int id) {
@@ -40,6 +44,20 @@ public class ManufacturerRESTClient  extends BaseRESTClient {
 
 		ClientResponse response = this.processRequest("manufacturer/all", HttpMethod.GET, null);
 		return response.getEntity(new GenericType<List<Manufacturer>>() { });
+		 
+	}
+	
+	public ManufacturerDTO getManufacturerDTO(int id) {
+
+		ClientResponse response = this.processRequest("manufacturer/dto/" + id , HttpMethod.GET, null);
+		ManufacturerDTO manufacturerDTO = response.getEntity(ManufacturerDTO.class);
+		return manufacturerDTO;
+	}
+	
+	public List<ManufacturerDTO> getAllManufacturerDTOs() {
+
+		ClientResponse response = this.processRequest("manufacturer/dto/all", HttpMethod.GET, null);
+		return response.getEntity(new GenericType<List<ManufacturerDTO>>() { });
 		 
 	}
 

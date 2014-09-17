@@ -7,8 +7,8 @@ import com.minimart.dto.ProductMasterDTO;
 public interface ProductMasterService {
 
 	public int addProductMaster(ProductMaster productMaster);
-	public void updateProductMaster(ProductMaster productMaster);
-	public void deleteProductMaster(int id);
+	public int updateProductMaster(ProductMaster productMaster);
+	public int deleteProductMaster(int id);
 	public ProductMaster getProductMasterById(int id);
 	public List<ProductMaster> getAllProductMasters();
 	public List<ProductMaster> getProductMastersByCriteria(Object criterion);
