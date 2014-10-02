@@ -51,7 +51,9 @@ var ${modelClassName}DetailsView = Backbone.View.extend({
 		
 			<#assign fields = fieldsByModel[modelClassName]>
 			<#list fields as fieldName>
+				<#if fieldName != "id">
 				${fieldName}: $('.${modelClassName?uncap_first}-${fieldName}').val() <#if fieldName_has_next>,</#if>
+				</#if>
 			</#list>
 		});
 

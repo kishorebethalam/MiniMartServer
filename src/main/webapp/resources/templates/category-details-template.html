@@ -5,30 +5,32 @@
 		<td>PARENTCATEGORYNAME</td>
 		<td>:</td>
         <td>
-        	<input type="text" class="category-parentCategoryName" value="<%= category ? category.get('parentCategoryName') : '' %>"/>
+        	<input type="text" class="category-parentCategoryName" value="<%= category ? category.get('parentCategoryName') : '' %>"  />
         </td>
         </tr>
-		<tr>
-		<td>ID</td>
-		<td>:</td>
-        <td>
-        	<input type="text" class="category-id" value="<%= category ? category.get('id') : '' %>"/>
-        </td>
-        </tr>
+        
+        
+        
+        <input type="text" class="category-id" value="<%= category ? category.get('id') : '' %>" hidden />
+        
 		<tr>
 		<td>PARENTCATEGORYID</td>
 		<td>:</td>
         <td>
-        	<input type="text" class="category-parentCategoryId" value="<%= category ? category.get('parentCategoryId') : '' %>"/>
+        	<input type="text" class="category-parentCategoryId" value="<%= category ? category.get('parentCategoryId') : '' %>"  />
         </td>
         </tr>
+        
+        
 		<tr>
 		<td>NAME</td>
 		<td>:</td>
         <td>
-        	<input type="text" class="category-name" value="<%= category ? category.get('name') : '' %>"/>
+        	<input type="text" class="category-name" value="<%= category ? category.get('name') : '' %>"  />
         </td>
         </tr>
+        
+        
     
     </table>
 

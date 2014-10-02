@@ -1,20 +1,18 @@
    <h3>Manufacturer Details:</h3>
     <table>
 	    
-		<tr>
-		<td>ID</td>
-		<td>:</td>
-        <td>
-        	<input type="text" class="manufacturer-id" value="<%= manufacturer ? manufacturer.get('id') : '' %>"/>
-        </td>
-        </tr>
+        
+        <input type="text" class="manufacturer-id" value="<%= manufacturer ? manufacturer.get('id') : '' %>" hidden />
+        
 		<tr>
 		<td>NAME</td>
 		<td>:</td>
         <td>
-        	<input type="text" class="manufacturer-name" value="<%= manufacturer ? manufacturer.get('name') : '' %>"/>
+        	<input type="text" class="manufacturer-name" value="<%= manufacturer ? manufacturer.get('name') : '' %>"  />
         </td>
         </tr>
+        
+        
     
     </table>
 

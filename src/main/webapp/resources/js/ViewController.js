@@ -49,7 +49,6 @@ var CategoryDetailsView = Backbone.View.extend({
 		var model = new CategoryModel({
 		
 				parentCategoryName: $('.category-parentCategoryName').val() ,
-				id: $('.category-id').val() ,
 				parentCategoryId: $('.category-parentCategoryId').val() ,
 				name: $('.category-name').val() 
 		});
@@ -128,7 +127,6 @@ var ManufacturerDetailsView = Backbone.View.extend({
 		// Create a manufacturer model to fill the form details
 		var model = new ManufacturerModel({
 		
-				id: $('.manufacturer-id').val() ,
 				name: $('.manufacturer-name').val() 
 		});
 
@@ -205,7 +203,6 @@ var BrandDetailsView = Backbone.View.extend({
 		var model = new BrandModel({
 		
 				manufacturerName: $('.brand-manufacturerName').val() ,
-				id: $('.brand-id').val() ,
 				manufacturerId: $('.brand-manufacturerId').val() ,
 				name: $('.brand-name').val() 
 		});
@@ -287,7 +284,6 @@ var InventoryItemDetailsView = Backbone.View.extend({
 				productName: $('.inventoryItem-productName').val() ,
 				measurementCategory: $('.inventoryItem-measurementCategory').val() ,
 				measurementQuantity: $('.inventoryItem-measurementQuantity').val() ,
-				id: $('.inventoryItem-id').val() ,
 				productId: $('.inventoryItem-productId').val() ,
 				trackingCode: $('.inventoryItem-trackingCode').val() ,
 				quantity: $('.inventoryItem-quantity').val() ,
@@ -377,7 +373,6 @@ var ProductDetailsView = Backbone.View.extend({
 		var model = new ProductModel({
 		
 				productMasterName: $('.product-productMasterName').val() ,
-				id: $('.product-id').val() ,
 				productMasterId: $('.product-productMasterId').val() ,
 				measurementCategory: $('.product-measurementCategory').val() ,
 				measurementQuantity: $('.product-measurementQuantity').val() ,
@@ -470,7 +465,6 @@ var ProductMasterDetailsView = Backbone.View.extend({
 		
 				brandName: $('.productMaster-brandName').val() ,
 				categoryName: $('.productMaster-categoryName').val() ,
-				id: $('.productMaster-id').val() ,
 				brandId: $('.productMaster-brandId').val() ,
 				categoryId: $('.productMaster-categoryId').val() ,
 				name: $('.productMaster-name').val() 

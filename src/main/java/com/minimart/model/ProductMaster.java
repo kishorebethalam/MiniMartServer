@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import com.minimart.annotation.POSFieldAnnotation;
 import com.minimart.annotation.POSModelAnnotation;
 
@@ -15,6 +17,8 @@ import com.minimart.annotation.POSModelAnnotation;
  */
 @POSModelAnnotation(dbTableName = "PRODUCT_MASTER")
 @XmlRootElement
+@JsonIgnoreProperties(ignoreUnknown=true)
+
 public class ProductMaster extends POSModel implements java.io.Serializable {
 
 	/**
