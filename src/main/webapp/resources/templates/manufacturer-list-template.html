@@ -1,0 +1,30 @@
+   <h3>ManufacturerCollection:</h3>
+    <form class="list-group-form">
+        
+        <a href="/#manufacturer/create" class="btn btn-default ">Create Manufacturer</a>
+        <table class="table striped">
+            <thead>
+                <tr>
+                	<td>
+                        <input type="checkbox" /></td>
+					<th>id</th>
+					<th>name</th>
+                </tr>
+            </thead>
+            <% _.each(manufacturerCollection,function(manufacturer){%>
+                <tr>
+                    <td>
+                        <input type="checkbox" /></td>
+                        
+					<td><%= manufacturer.get('id')%></td>
+					<td><%= manufacturer.get('name')%></td>
+                    <td>
+                        <a href="/#manufacturer/edit/<%= manufacturer.get('id')%>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/#manufacturer/delete/<%= manufacturer.get('id')%>" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            <%});%>
+        </table>
+    </form>

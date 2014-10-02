@@ -1,0 +1,24 @@
+   <h3>Manufacturer Details:</h3>
+    <table>
+	    
+		<tr>
+		<td>ID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="manufacturer-id" value="<%= manufacturer ? manufacturer.get('id') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>NAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="manufacturer-name" value="<%= manufacturer ? manufacturer.get('name') : '' %>"/>
+        </td>
+        </tr>
+    
+    </table>
+
+    <input type="button" value="Save" id="<%= manufacturer ? 'updateManufacturer' : 'createManufacturer' %>"/>
+    <input type="button" value="Cancel" id="closeDetails"/>
+
+    

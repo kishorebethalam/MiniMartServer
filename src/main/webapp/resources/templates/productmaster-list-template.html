@@ -1,0 +1,38 @@
+   <h3>ProductMasterCollection:</h3>
+    <form class="list-group-form">
+        
+        <a href="/#productMaster/create" class="btn btn-default ">Create ProductMaster</a>
+        <table class="table striped">
+            <thead>
+                <tr>
+                	<td>
+                        <input type="checkbox" /></td>
+					<th>brandName</th>
+					<th>categoryName</th>
+					<th>id</th>
+					<th>brandId</th>
+					<th>categoryId</th>
+					<th>name</th>
+                </tr>
+            </thead>
+            <% _.each(productMasterCollection,function(productMaster){%>
+                <tr>
+                    <td>
+                        <input type="checkbox" /></td>
+                        
+					<td><%= productMaster.get('brandName')%></td>
+					<td><%= productMaster.get('categoryName')%></td>
+					<td><%= productMaster.get('id')%></td>
+					<td><%= productMaster.get('brandId')%></td>
+					<td><%= productMaster.get('categoryId')%></td>
+					<td><%= productMaster.get('name')%></td>
+                    <td>
+                        <a href="/#productMaster/edit/<%= productMaster.get('id')%>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/#productMaster/delete/<%= productMaster.get('id')%>" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            <%});%>
+        </table>
+    </form>

@@ -1,0 +1,143 @@
+{
+    "clusters": [
+        {
+            "id":"cluster1",
+            "name":"Lowrem Cluster",
+            "rackGroup" : "1",
+            "nodes":[
+                {
+                    "id":"sreekarp1-wsl",
+                    "name":"sreekarp1-wsl",
+                    "url":"www.zookeeper1.com",
+                    "roles": ["zookeeper", "journalnode","jobhistoryserver", "datanode", "hbase_region_server", "hbase_master", "resourcemanager", "nodemanager"],
+                    "noOfAlerts":5, 
+                    "state":"red",
+                    "rack" : "1"
+                },
+                {
+                    "id":"kbethalam-wsl",
+                    "name":"kbethalam-wsl",
+                    "url":"www.zookeeper2.com",
+                    "roles": [],
+                    "noOfAlerts":0,
+                    "state":"green",
+                    "rack" : "2"
+                },
+                {
+                    "id":"sguggilam2-wsl",
+                    "name":"sguggilam2-wsl",
+                    "url":"www.zookeeper3.com",
+                    "roles": ["zk"],
+                    "noOfAlerts":0,
+                    "state":"green",
+                    "rack" : "3"
+                },
+                {
+                    "id":"ushak-wsl",
+                    "name":"ushak-wsl",
+                    "url":"www.NameNode1.com",
+                    "roles": ["zookeeper", "journalnode","jobhistoryserver", "datanode", "hbase_region_server", "hbase_master", "resourcemanager", "nodemanager"],
+                    "noOfAlerts":0,
+                    "state":"green",
+                    "rack" : "1"
+                }
+            ], 
+            "noOfAlerts":5, 
+            "state":"red"
+        }
+       ,
+        {
+            "id":"1cluster2",
+            "name":"1Ipsum Cluster",
+            "rackGroup" : "2",
+            "nodes":[
+            ], 
+            "noOfAlerts":3, 
+            "state":"yellow"
+        },
+        {
+            "id":"cluster3",
+            "name":"Dolor Sit Cluster",
+            "rackGroup" : "3",
+            "nodes":[
+            ],
+            "noOfAlerts":0, "state":"green"}
+
+    ],
+    "rackGroups" : [
+        { 
+            "id":"1", 
+            "name":"rackgroup-1",
+            "racks" : [
+                {"id":"1", "name":"rack-1"},
+                {"id":"2", "name":"rack-2"},
+                {"id":"3", "name":"rack-3"},
+                {"id":"4", "name":"rack-4"}
+            ]
+        },
+        {
+            "id":"2",
+            "name":"rackgroup-2",
+            "racks" : [
+                {"id":"5", "name":"rack-1"},
+                {"id":"6", "name":"rack-2"},
+                {"id":"7", "name":"rack-3"},
+                {"id":"8", "name":"rack-4"}
+            ]
+        } ,
+        {
+            "id":"3",
+            "name":"rackgroup-3",
+            "racks" : [
+                {"id":"9", "name":"rack-1"},
+                {"id":"10", "name":"rack-2"},
+                {"id":"11", "name":"rack-3"},
+                {"id":"12", "name":"rack-4"}
+            ]
+        }
+	],
+    "roles":[
+        {"id":"zk","name":"ZooKeeper", "metric_categires":["zkmeta"]},
+        {"id":"hm","name":"HMaster", "metric_categires":["hmmeta", "hmcluster", "hmsplit", "hmsnapshot"]},
+        {"id":"hr","name":"HRegion"},
+        {"id":"nm","name":"Name Node"},
+        {"id":"jn","name":"Journal Node"},
+        {"id":"rm","name":"Regional Master"},
+        {"id":"dn","name":"Data Node"}
+    ],
+    "metric_categories":[
+        {"id":"cpu","name":"CPU Usage", "metrics":[
+            {"id":"load_factor","name":"Load Factor", "description":"sample description", "threshhold":"1"}
+        ]},
+        {"id":"disk","name":"Disk Usage", "metrics":[
+                {"id":"total_space","name":"Total Space", "description":"sample description", "threshhold":"1"},
+                {"id":"used_space","name":"Used Space", "description":"sample description", "threshhold":"1"}
+        ]},
+        {"id":"memory","name":"Memory Usage", "metrics":[
+            {"id":"total_space","name":"Total Space", "description":"sample description", "threshhold":"1"},
+            {"id":"used_space","name":"Used Space", "description":"sample description", "threshhold":"1"}
+        ]},
+        {"id":"zkmeta","name":"ZooKeeper Meta Info", "metrics":[]},
+        {"id":"hmmeta","name":"HMaster Meta Info", "metrics":[
+            {"id":"average_load","name":"Average Load", "description":"sample description", "threshhold":"1"},
+            {"id":"cluster_id","name":"Cluster ID", "description":"sample description", "threshhold":"1"},
+            {"id":"coprocessors","name":"Coprocessors", "description":"sample description", "threshhold":"1"},
+            {"id":"is_active_master","name":"Is Active Master?", "description":"sample description", "threshhold":"1"},
+            {"id":"master_active_time","name":"Master Active Time", "description":"sample description", "threshhold":"1"},
+            {"id":"master_start_time","name":"Master Start Time", "description":"sample description", "threshhold":"1"},
+            {"id":"active_region_servers","name":"Active Region Servers", "description":"sample description", "threshhold":"1"},
+            {"id":"zookeeper_quorum","name":"Zookeeper Quorum", "description":"sample description", "threshhold":"1"},
+            {"id":"regions_in_transition","name":"Regions In Transition", "description":"sample description", "threshhold":"1"},
+            {"id":"server_name","name":"Server Name", "description":"sample description", "threshhold":"1"}
+        ]},
+        {"id":"hrmeta","name":"HRegion Meta Info", "metrics":[]},
+        {"id":"nmmeta","name":"NameNode Meta Info", "metrics":[]},
+        {"id":"jnmeta","name":"JournalNode Meta Info","metrics":[]},
+        {"id":"dnmeta","name":"DataNode Meta Info" ,"metrics":[]},
+        {"id":"rmmeta","name":"Regional Master Meta Info","metrics":[]},
+        {"id":"hmcluster","name":"HMaster Cluster Specific Metrics","metrics":[]},
+        {"id":"hmsplit","name":"HMaster Split Metrics","metrics":[]},
+        {"id":"hmsnapshot","name":"HMaster Snapshot Metrics","metrics":[]},
+        {"id":"dn","name":"Data Node","metrics":[]}
+    ]
+}

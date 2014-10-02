@@ -1,0 +1,34 @@
+   <h3>BrandCollection:</h3>
+    <form class="list-group-form">
+        
+        <a href="/#brand/create" class="btn btn-default ">Create Brand</a>
+        <table class="table striped">
+            <thead>
+                <tr>
+                	<td>
+                        <input type="checkbox" /></td>
+					<th>manufacturerName</th>
+					<th>id</th>
+					<th>manufacturerId</th>
+					<th>name</th>
+                </tr>
+            </thead>
+            <% _.each(brandCollection,function(brand){%>
+                <tr>
+                    <td>
+                        <input type="checkbox" /></td>
+                        
+					<td><%= brand.get('manufacturerName')%></td>
+					<td><%= brand.get('id')%></td>
+					<td><%= brand.get('manufacturerId')%></td>
+					<td><%= brand.get('name')%></td>
+                    <td>
+                        <a href="/#brand/edit/<%= brand.get('id')%>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/#brand/delete/<%= brand.get('id')%>" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            <%});%>
+        </table>
+    </form>

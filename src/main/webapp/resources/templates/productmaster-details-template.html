@@ -1,0 +1,52 @@
+   <h3>ProductMaster Details:</h3>
+    <table>
+	    
+		<tr>
+		<td>BRANDNAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="productmaster-brandName" value="<%= productMaster ? productMaster.get('brandName') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>CATEGORYNAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="productmaster-categoryName" value="<%= productMaster ? productMaster.get('categoryName') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>ID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="productmaster-id" value="<%= productMaster ? productMaster.get('id') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>BRANDID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="productmaster-brandId" value="<%= productMaster ? productMaster.get('brandId') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>CATEGORYID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="productmaster-categoryId" value="<%= productMaster ? productMaster.get('categoryId') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>NAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="productmaster-name" value="<%= productMaster ? productMaster.get('name') : '' %>"/>
+        </td>
+        </tr>
+    
+    </table>
+
+    <input type="button" value="Save" id="<%= productMaster ? 'updateProductMaster' : 'createProductMaster' %>"/>
+    <input type="button" value="Cancel" id="closeDetails"/>
+
+    

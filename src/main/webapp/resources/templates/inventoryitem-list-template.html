@@ -1,0 +1,46 @@
+   <h3>InventoryItemCollection:</h3>
+    <form class="list-group-form">
+        
+        <a href="/#inventoryItem/create" class="btn btn-default ">Create InventoryItem</a>
+        <table class="table striped">
+            <thead>
+                <tr>
+                	<td>
+                        <input type="checkbox" /></td>
+					<th>productName</th>
+					<th>measurementCategory</th>
+					<th>measurementQuantity</th>
+					<th>id</th>
+					<th>productId</th>
+					<th>trackingCode</th>
+					<th>quantity</th>
+					<th>receivedDate</th>
+					<th>expiryDate</th>
+					<th>promotionalOffer</th>
+                </tr>
+            </thead>
+            <% _.each(inventoryItemCollection,function(inventoryItem){%>
+                <tr>
+                    <td>
+                        <input type="checkbox" /></td>
+                        
+					<td><%= inventoryItem.get('productName')%></td>
+					<td><%= inventoryItem.get('measurementCategory')%></td>
+					<td><%= inventoryItem.get('measurementQuantity')%></td>
+					<td><%= inventoryItem.get('id')%></td>
+					<td><%= inventoryItem.get('productId')%></td>
+					<td><%= inventoryItem.get('trackingCode')%></td>
+					<td><%= inventoryItem.get('quantity')%></td>
+					<td><%= inventoryItem.get('receivedDate')%></td>
+					<td><%= inventoryItem.get('expiryDate')%></td>
+					<td><%= inventoryItem.get('promotionalOffer')%></td>
+                    <td>
+                        <a href="/#inventoryItem/edit/<%= inventoryItem.get('id')%>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/#inventoryItem/delete/<%= inventoryItem.get('id')%>" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            <%});%>
+        </table>
+    </form>

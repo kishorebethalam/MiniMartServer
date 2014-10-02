@@ -1,0 +1,33 @@
+[ {"id":"category1", "name":"HMaster MetaInfog", "metrics":
+[{"id":"average_load","name":"Average Load", "type": "Timeseries_Number", "values":{"kbethalam-wsl":"1.5", "kbethalam-wsl":"1.3"} , "threshold":"1"},
+    {"id":"cpu_usage","name":"CPU Usage", "type": "Timeseries_Percentage", "values":{"sreekarp1-wsl":"65", "kbethalam-wsl":"45"} , "threshold":"55"},
+    {"id":"is_active_master","name":"Is Active Master?", "type": "Constant_Number", "values":{"sreekarp1-wsl":1, "kbethalam-wsl":0}},
+    {"id":"active_region_servers","name":"Active Region Servers", "type": "List_Hosts", "values":{"sreekarp1-wsl":["host1-sreekarp1-wsl", "host2-sreekarp1-wsl", "host3-sreekarp1-wsl"], "kbethalam-wsl":["host1-kbethalam-wsl", "host2-kbethalam-wsl", "host3-kbethalam-wsl"]}},
+    {"id":"master_active_time","name":"Master Active Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:10:54" , "kbethalam-wsl":"2013-07-28 10:10:54"}},
+    {"id":"master_start_time","name":"Master Start Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:30:54", "kbethalam-wsl":"2013-07-28 10:30:54"}}
+]},
+    {"id":"category2", "name":"HMaster Cluster Specific Metrics", "metrics":
+        [{"id":"average_load","name":"Average Load", "type": "Timeseries_Number", "values":{"sreekarp1-wsl":"1.5", "kbethalam-wsl":"1.3"} , "threshold":"1"},
+            {"id":"cpu_usage","name":"CPU Usage", "type": "Timeseries_Percentage", "values":{"sreekarp1-wsl":"65", "kbethalam-wsl":"45"} , "threshold":"55"},
+            {"id":"is_active_master","name":"Is Active Master?", "type": "Constant_Number", "values":{"sreekarp1-wsl":1, "kbethalam-wsl":0}},
+            {"id":"active_region_servers","name":"Active Region Servers", "type": "List_Hosts", "values":{"sreekarp1-wsl":["host1-sreekarp1-wsl", "host2-sreekarp1-wsl", "host3-sreekarp1-wsl"], "kbethalam-wsl":["host1-kbethalam-wsl", "host2-kbethalam-wsl", "host3-kbethalam-wsl"]}},
+            {"id":"master_active_time","name":"Master Active Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:10:54" , "kbethalam-wsl":"2013-07-28 10:10:54"}},
+            {"id":"master_start_time","name":"Master Start Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:30:54", "kbethalam-wsl":"2013-07-28 10:30:54"}}
+        ]},
+    {"id":"category3", "name":"HMaster Split Metrics", "metrics":
+        [{"id":"average_load","name":"Average Load", "type": "Timeseries_Number", "values":{"sreekarp1-wsl":"1.5", "kbethalam-wsl":"1.3"} , "threshold":"1"},
+            {"id":"cpu_usage","name":"CPU Usage", "type": "Timeseries_Percentage", "values":{"sreekarp1-wsl":"65", "kbethalam-wsl":"45"} , "threshold":"55"},
+            {"id":"is_active_master","name":"Is Active Master?", "type": "Constant_Number", "values":{"sreekarp1-wsl":1, "kbethalam-wsl":0}},
+            {"id":"active_region_servers","name":"Active Region Servers", "type": "List_Hosts", "values":{"sreekarp1-wsl":["host1-sreekarp1-wsl", "host2-sreekarp1-wsl", "host3-sreekarp1-wsl"], "kbethalam-wsl":["host1-kbethalam-wsl", "host2-kbethalam-wsl", "host3-kbethalam-wsl"]}},
+            {"id":"master_active_time","name":"Master Active Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:10:54" , "kbethalam-wsl":"2013-07-28 10:10:54"}},
+            {"id":"master_start_time","name":"Master Start Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:30:54", "kbethalam-wsl":"2013-07-28 10:30:54"}}
+        ]},
+    {"id":"category4", "name":"HMaster Split Metrics", "metrics":
+        [{"id":"average_load","name":"Average Load", "type": "Timeseries_Number", "values":{"sreekarp1-wsl":"1.5", "kbethalam-wsl":"1.3"} , "threshold":"1"},
+            {"id":"cpu_usage","name":"CPU Usage", "type": "Timeseries_Percentage", "values":{"sreekarp1-wsl":"65", "kbethalam-wsl":"45"} , "threshold":"55"},
+            {"id":"is_active_master","name":"Is Active Master?", "type": "Constant_Number", "values":{"sreekarp1-wsl":1, "kbethalam-wsl":0}},
+            {"id":"active_region_servers","name":"Active Region Servers", "type": "List_Hosts", "values":{"sreekarp1-wsl":["host1-sreekarp1-wsl", "host2-sreekarp1-wsl", "host3-sreekarp1-wsl"], "kbethalam-wsl":["host1-kbethalam-wsl", "host2-kbethalam-wsl", "host3-kbethalam-wsl"]}},
+            {"id":"master_active_time","name":"Master Active Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:10:54" , "kbethalam-wsl":"2013-07-28 10:10:54"}},
+            {"id":"master_start_time","name":"Master Start Time", "type": "Constant_Date", "values":{"sreekarp1-wsl":"2013-07-29 10:30:54", "kbethalam-wsl":"2013-07-28 10:30:54"}}
+        ]}
+    ]

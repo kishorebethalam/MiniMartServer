@@ -1,0 +1,80 @@
+   <h3>Product Details:</h3>
+    <table>
+	    
+		<tr>
+		<td>PRODUCTMASTERNAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-productMasterName" value="<%= product ? product.get('productMasterName') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>ID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-id" value="<%= product ? product.get('id') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>PRODUCTMASTERID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-productMasterId" value="<%= product ? product.get('productMasterId') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>MEASUREMENTCATEGORY</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-measurementCategory" value="<%= product ? product.get('measurementCategory') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>MEASUREMENTQUANTITY</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-measurementQuantity" value="<%= product ? product.get('measurementQuantity') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>MRP</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-mrp" value="<%= product ? product.get('mrp') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>SELLPRICE</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-sellPrice" value="<%= product ? product.get('sellPrice') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>BUYPRICE</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-buyPrice" value="<%= product ? product.get('buyPrice') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>REORDERVOLUME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-reorderVolume" value="<%= product ? product.get('reorderVolume') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>REORDERFREQUENCY</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="product-reorderFrequency" value="<%= product ? product.get('reorderFrequency') : '' %>"/>
+        </td>
+        </tr>
+    
+    </table>
+
+    <input type="button" value="Save" id="<%= product ? 'updateProduct' : 'createProduct' %>"/>
+    <input type="button" value="Cancel" id="closeDetails"/>
+
+    

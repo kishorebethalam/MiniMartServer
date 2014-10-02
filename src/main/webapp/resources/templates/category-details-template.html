@@ -1,0 +1,38 @@
+   <h3>Category Details:</h3>
+    <table>
+	    
+		<tr>
+		<td>PARENTCATEGORYNAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="category-parentCategoryName" value="<%= category ? category.get('parentCategoryName') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>ID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="category-id" value="<%= category ? category.get('id') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>PARENTCATEGORYID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="category-parentCategoryId" value="<%= category ? category.get('parentCategoryId') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>NAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="category-name" value="<%= category ? category.get('name') : '' %>"/>
+        </td>
+        </tr>
+    
+    </table>
+
+    <input type="button" value="Save" id="<%= category ? 'updateCategory' : 'createCategory' %>"/>
+    <input type="button" value="Cancel" id="closeDetails"/>
+
+    

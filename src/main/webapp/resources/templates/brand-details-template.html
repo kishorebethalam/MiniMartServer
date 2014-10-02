@@ -1,0 +1,38 @@
+   <h3>Brand Details:</h3>
+    <table>
+	    
+		<tr>
+		<td>MANUFACTURERNAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="brand-manufacturerName" value="<%= brand ? brand.get('manufacturerName') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>ID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="brand-id" value="<%= brand ? brand.get('id') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>MANUFACTURERID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="brand-manufacturerId" value="<%= brand ? brand.get('manufacturerId') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>NAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="brand-name" value="<%= brand ? brand.get('name') : '' %>"/>
+        </td>
+        </tr>
+    
+    </table>
+
+    <input type="button" value="Save" id="<%= brand ? 'updateBrand' : 'createBrand' %>"/>
+    <input type="button" value="Cancel" id="closeDetails"/>
+
+    

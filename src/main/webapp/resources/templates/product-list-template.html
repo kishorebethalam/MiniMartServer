@@ -1,0 +1,46 @@
+   <h3>ProductCollection:</h3>
+    <form class="list-group-form">
+        
+        <a href="/#product/create" class="btn btn-default ">Create Product</a>
+        <table class="table striped">
+            <thead>
+                <tr>
+                	<td>
+                        <input type="checkbox" /></td>
+					<th>productMasterName</th>
+					<th>id</th>
+					<th>productMasterId</th>
+					<th>measurementCategory</th>
+					<th>measurementQuantity</th>
+					<th>mrp</th>
+					<th>sellPrice</th>
+					<th>buyPrice</th>
+					<th>reorderVolume</th>
+					<th>reorderFrequency</th>
+                </tr>
+            </thead>
+            <% _.each(productCollection,function(product){%>
+                <tr>
+                    <td>
+                        <input type="checkbox" /></td>
+                        
+					<td><%= product.get('productMasterName')%></td>
+					<td><%= product.get('id')%></td>
+					<td><%= product.get('productMasterId')%></td>
+					<td><%= product.get('measurementCategory')%></td>
+					<td><%= product.get('measurementQuantity')%></td>
+					<td><%= product.get('mrp')%></td>
+					<td><%= product.get('sellPrice')%></td>
+					<td><%= product.get('buyPrice')%></td>
+					<td><%= product.get('reorderVolume')%></td>
+					<td><%= product.get('reorderFrequency')%></td>
+                    <td>
+                        <a href="/#product/edit/<%= product.get('id')%>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/#product/delete/<%= product.get('id')%>" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            <%});%>
+        </table>
+    </form>

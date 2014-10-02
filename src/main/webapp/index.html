@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Test App</title>
+
+    <link rel="stylesheet" href="resources/css/third-party/jquery-ui.min.css" />
+    <link rel="stylesheet" href="resources/css/third-party/nv.d3.css" />
+    <link rel="stylesheet" href="resources/css/hbasemm.css" />
+    <link rel="stylesheet" href="resources/css/third-party/jquery.ui.theme.min.css" />
+
+    <script src="resources/js/third-party/jquery-1.9.1.min.js"></script>
+    <script src="resources/js/third-party/jquery-ui.min.js"></script>
+    <script src="resources/js/third-party/d3.v2.min.js"></script>
+    <script src="resources/js/third-party/nv.d3.min.js"></script>
+    <script src="resources/js/third-party/JSON.js"></script>
+	<script src="resources/js/third-party/underscore.min.js"></script>
+	<script src="resources/js/third-party/backbone.min.js"></script>
+
+    <script src="resources/js/ModelController.js"></script>
+ <script src="resources/js/ViewController.js"></script>
+    
+    <script src="resources/js/ServiceController.js"></script>
+    <script src="resources/js/TestDataController.js"></script>
+    <script src="resources/js/App.js"></script>
+    <script src="resources/js/AppRouter.js"></script>
+
+
+
+    <script>
+
+
+	    $(document).ready(function() {
+	    
+            setupDynamicRouting();
+
+             populateTabs('#tabs', function(){
+                //Once the tabs are populated, select the appropriate tab.
+                
+                //Check if the application has any current tab. If it's identify it using hash.
+                var hashValue = window.location['hash'];
+                	                alert(hashValue);
+
+                if (!hashValue){
+                	
+	                selectFirstTab('#tabs');
+	            }
+	            else {
+	                var routeBase = hashValue.substr(1, hashValue.length - 1);
+	                alert(routeBase);
+	                if (routeBase.indexOf('/') != -1 ){
+	                	routeBase = routeBase.substr(0, routeBase.indexOf('/'));
+	                }
+	                selectTabByRoute('#tabs', routeBase); 
+	            }    
+            });
+            
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+<!-- <div id="top" class="header"><img src="resources/img/salesforce_logo.png"/></div> -->
+<div id="tabs" class="tabbar"></div>
+<div id="main_content" class="contentarea">
+</div>
+</body>
+</html>

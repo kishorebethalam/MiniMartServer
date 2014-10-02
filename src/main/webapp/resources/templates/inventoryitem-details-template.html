@@ -1,0 +1,80 @@
+   <h3>InventoryItem Details:</h3>
+    <table>
+	    
+		<tr>
+		<td>PRODUCTNAME</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-productName" value="<%= inventoryItem ? inventoryItem.get('productName') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>MEASUREMENTCATEGORY</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-measurementCategory" value="<%= inventoryItem ? inventoryItem.get('measurementCategory') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>MEASUREMENTQUANTITY</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-measurementQuantity" value="<%= inventoryItem ? inventoryItem.get('measurementQuantity') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>ID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-id" value="<%= inventoryItem ? inventoryItem.get('id') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>PRODUCTID</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-productId" value="<%= inventoryItem ? inventoryItem.get('productId') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>TRACKINGCODE</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-trackingCode" value="<%= inventoryItem ? inventoryItem.get('trackingCode') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>QUANTITY</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-quantity" value="<%= inventoryItem ? inventoryItem.get('quantity') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>RECEIVEDDATE</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-receivedDate" value="<%= inventoryItem ? inventoryItem.get('receivedDate') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>EXPIRYDATE</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-expiryDate" value="<%= inventoryItem ? inventoryItem.get('expiryDate') : '' %>"/>
+        </td>
+        </tr>
+		<tr>
+		<td>PROMOTIONALOFFER</td>
+		<td>:</td>
+        <td>
+        	<input type="text" class="inventoryitem-promotionalOffer" value="<%= inventoryItem ? inventoryItem.get('promotionalOffer') : '' %>"/>
+        </td>
+        </tr>
+    
+    </table>
+
+    <input type="button" value="Save" id="<%= inventoryItem ? 'updateInventoryItem' : 'createInventoryItem' %>"/>
+    <input type="button" value="Cancel" id="closeDetails"/>
+
+    

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.atteo.evo.inflector.English;
+import org.hamcrest.core.IsEqual;
 
 import com.minimart.annotation.DTOQueryAnnotation;
 import com.minimart.annotation.POSDTOFieldAnnotation;
@@ -39,18 +40,22 @@ public class CodeGenerator {
 	private String serviceTestPackage;
 	private String restPackage;
 	private String dtoPackage;
-
+	
+	private String generatedHTMLTemplatesFolderPath;
+	private String generatedJSFilesFolderPath;
 
 	/**
 	 * @param basePackage
 	 * @param srcFolderPath
 	 */
-	public CodeGenerator(String basePackage, String srcFolderPath, String templatesFolderPath) {
+	public CodeGenerator(String basePackage, String srcFolderPath, String templatesFolderPath, String generatedJSFilesFolderPath, String generatedHTMLTemplatesFolderPath) {
 		super();
 		this.basePackage = basePackage;
 		this.srcFolderPath = srcFolderPath;
 		this.testFolderPath = srcFolderPath.replace("main","test");
 		this.templatesFolderPath = templatesFolderPath;
+		this.generatedJSFilesFolderPath = generatedJSFilesFolderPath;
+		this.generatedHTMLTemplatesFolderPath = generatedHTMLTemplatesFolderPath;
 
 		this.modelPackage = this.basePackage + ".model";
 		this.servicePackage = this.basePackage + ".service";
@@ -68,8 +73,9 @@ public class CodeGenerator {
 	public static void main(String[] args) {
 
 		CodeGenerator generator = new CodeGenerator("com.minimart",
-				"/Users/kbethalam/Desktop/Work/MiniMartServer/src/main/java/", "/src/main/resources/templates/freemaker/");
+				"/Users/kbethalam/Desktop/Work/MiniMartServer/src/main/java/", "/src/main/resources/templates/freemaker/", "/Users/kbethalam/Desktop/Work/MiniMartServer/src/main/webapp/resources/js", "/Users/kbethalam/Desktop/Work/MiniMartServer/src/main/webapp/resources/templates");
 
+		
 		List<String> models = new ArrayList<String>();
 		models.add("Category");
 		models.add("Manufacturer");
@@ -77,10 +83,16 @@ public class CodeGenerator {
 		models.add("InventoryItem");
 		models.add("Product");
 		models.add("ProductMaster");
+		
+		
+		generator.generateJSAppRouter(models);
+		generator.generateJSModelController(models);
+		generator.generateJSViewController(models);
+		generator.generateHTMLTemplates(models);
 
-		QueryGenerator.startGeneration("src/main/resources/");
-		generator.generateCode(models);
-		QueryGenerator.completeGeneration();
+//		QueryGenerator.startGeneration("src/main/resources/");
+//		generator.generateCode(models);
+//		QueryGenerator.completeGeneration();
 
 	}
 
@@ -240,6 +252,182 @@ public class CodeGenerator {
 			e.printStackTrace();
 		}
 	}
+	
+	private void generateJSModelController(List<String> modelClasses) {
+
+//		List<String> modelClasses = Arrays.asList("Brand","Category");
+		Map<String, List<String>> fieldsByModel = new HashMap<String, List<String>>();
+		for (String model : modelClasses){
+			try {
+				List<Field> fields = getAllFields(Class.forName(this.dtoPackage + "." + model + "DTO"));
+				List<String> fieldNames = new ArrayList<String>();
+				for (Field field : fields){
+					if (!(field.getName().equalsIgnoreCase("serialVersionUID"))){
+						fieldNames.add(field.getName());
+					}
+				}
+				fieldsByModel.put(model, fieldNames);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		// Freemarker configuration object
+		Configuration cfg = new Configuration();
+		try {
+			// Load template from source folder
+			Template template = cfg.getTemplate(this.templatesFolderPath + "JSModelController.ftl");
+
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("dtoClasses", modelClasses);
+			data.put("fieldsByModel", fieldsByModel);
+			
+			generateJSFile("ModelController", template, data);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void generateJSViewController(List<String> modelClasses) {
+
+//		List<String> modelClasses = Arrays.asList("Brand","Category");
+		Map<String, List<String>> fieldsByModel = new HashMap<String, List<String>>();
+		for (String model : modelClasses){
+			try {
+				List<Field> fields = getAllFields(Class.forName(this.dtoPackage + "." + model + "DTO"));
+				List<String> fieldNames = new ArrayList<String>();
+				for (Field field : fields){
+					if (!(field.getName().equalsIgnoreCase("serialVersionUID"))){
+						fieldNames.add(field.getName());
+					}
+				}
+				fieldsByModel.put(model, fieldNames);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		// Freemarker configuration object
+		Configuration cfg = new Configuration();
+		try {
+			// Load template from source folder
+			Template template = cfg.getTemplate(this.templatesFolderPath + "JSViewController.ftl");
+
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("dtoClasses", modelClasses);
+			data.put("fieldsByModel", fieldsByModel);
+			
+			generateJSFile("ViewController", template, data);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void generateJSAppRouter(List<String> modelClasses) {
+
+		// Freemarker configuration object
+		Configuration cfg = new Configuration();
+		try {
+			// Load template from source folder
+			Template template = cfg.getTemplate(this.templatesFolderPath + "JSAppRouter.ftl");
+
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("dtoClasses", modelClasses);
+			
+			generateJSFile("AppRouter", template, data);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void generateHTMLTemplates(List<String> modelClasses) {
+
+//		List<String> modelClasses = Arrays.asList("Brand","Category");
+		for (String modelClass : modelClasses){
+			generateHTMLListTemplate(modelClass);
+			generateHTMLDetailTemplate(modelClass);
+		}
+		
+	}
+	private void generateHTMLListTemplate(String modelClassName) {
+
+		List<Field> fields;
+		try {
+			fields = getAllFields(Class.forName(this.dtoPackage + "." + modelClassName + "DTO"));
+			
+			List<String> fieldNames = new ArrayList<String>();
+			for (Field field : fields){
+				if (!(field.getName().equalsIgnoreCase("serialVersionUID"))){
+					fieldNames.add(field.getName());
+				}
+			}
+
+			// Freemarker configuration object
+			Configuration cfg = new Configuration();
+			try {
+				// Load template from source folder
+				Template template = cfg.getTemplate(this.templatesFolderPath + "html-list-template.ftl");
+
+				Map<String, Object> data = new HashMap<String, Object>();
+				data.put("modelClassName", modelClassName);
+				data.put("fields", fieldNames);
+				
+				generateHTMLTemplateFile(modelClassName.toLowerCase() + "-list-template", template, data);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	private void generateHTMLDetailTemplate(String modelClassName) {
+
+		List<Field> fields;
+		try {
+			fields = getAllFields(Class.forName(this.dtoPackage + "." + modelClassName + "DTO"));
+			
+			List<String> fieldNames = new ArrayList<String>();
+			for (Field field : fields){
+				if (!(field.getName().equalsIgnoreCase("serialVersionUID"))){
+					fieldNames.add(field.getName());
+				}
+			}
+
+			// Freemarker configuration object
+			Configuration cfg = new Configuration();
+			try {
+				// Load template from source folder
+				Template template = cfg.getTemplate(this.templatesFolderPath + "html-details-template.ftl");
+
+				Map<String, Object> data = new HashMap<String, Object>();
+				data.put("modelClassName", modelClassName);
+				data.put("fields", fieldNames);
+				
+				generateHTMLTemplateFile(modelClassName.toLowerCase() + "-details-template", template, data);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (TemplateException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 	public void generateCRUDQueries(String className, Map<String, Object> data) {
 
 		try {
@@ -369,6 +557,49 @@ public class CodeGenerator {
 		return dbTableName;
 	}
 
+	public void generateJSFile(String fileName,
+			Template template, Map<String, Object> data) throws IOException,
+			TemplateException {
+
+		String filePath = this.generatedJSFilesFolderPath ;
+
+		File parentDirectory = new File(filePath); // will create a sub folder
+													// for each user (currently
+													// does not work, below
+													// hopefully is a solution)
+
+		if (!parentDirectory.exists()) {
+			parentDirectory.mkdirs();
+		}
+
+		Writer fileWriter = new FileWriter(filePath + "/" + fileName + ".js");
+		template.process(data, fileWriter);
+		fileWriter.flush();
+		fileWriter.close();
+	}
+	
+	public void generateHTMLTemplateFile(String fileName,
+			Template template, Map<String, Object> data) throws IOException,
+			TemplateException {
+
+		String filePath = this.generatedHTMLTemplatesFolderPath ;
+
+		File parentDirectory = new File(filePath); // will create a sub folder
+													// for each user (currently
+													// does not work, below
+													// hopefully is a solution)
+
+		if (!parentDirectory.exists()) {
+			parentDirectory.mkdirs();
+		}
+
+		Writer fileWriter = new FileWriter(filePath + "/" + fileName+ ".html");
+		template.process(data, fileWriter);
+		fileWriter.flush();
+		fileWriter.close();
+	}
+	
+	
 	public void generateFile(String className, String packageName,
 			Template template, Map<String, Object> data) throws IOException,
 			TemplateException {
@@ -419,6 +650,7 @@ public class CodeGenerator {
 		for (Class<?> c = type; c != null; c = c.getSuperclass()) {
 			fields.addAll(Arrays.asList(c.getDeclaredFields()));
 		}
+		
 		return fields;
 	}
 }

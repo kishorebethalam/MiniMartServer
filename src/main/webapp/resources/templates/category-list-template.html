@@ -1,0 +1,34 @@
+   <h3>CategoryCollection:</h3>
+    <form class="list-group-form">
+        
+        <a href="/#category/create" class="btn btn-default ">Create Category</a>
+        <table class="table striped">
+            <thead>
+                <tr>
+                	<td>
+                        <input type="checkbox" /></td>
+					<th>parentCategoryName</th>
+					<th>id</th>
+					<th>parentCategoryId</th>
+					<th>name</th>
+                </tr>
+            </thead>
+            <% _.each(categoryCollection,function(category){%>
+                <tr>
+                    <td>
+                        <input type="checkbox" /></td>
+                        
+					<td><%= category.get('parentCategoryName')%></td>
+					<td><%= category.get('id')%></td>
+					<td><%= category.get('parentCategoryId')%></td>
+					<td><%= category.get('name')%></td>
+                    <td>
+                        <a href="/#category/edit/<%= category.get('id')%>" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/#category/delete/<%= category.get('id')%>" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            <%});%>
+        </table>
+    </form>
