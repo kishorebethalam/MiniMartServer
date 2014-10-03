@@ -7,13 +7,13 @@
 		<td>${fieldName?upper_case}</td>
 		<td>:</td>
         <td>
-        	<input type="text" class="${modelClassName?lower_case}-${fieldName}" value="<%= ${modelClassName?uncap_first} ? ${modelClassName?uncap_first}.get('${fieldName}') : '' %>"  />
+        	<input type="text" class="${modelClassName?uncap_first}-${fieldName}" value="<%= ${modelClassName?uncap_first} ? ${modelClassName?uncap_first}.get('${fieldName}') : '' %>"  />
         </td>
         </tr>
         </#if>
         
         <#if fieldName == "id">
-        <input type="text" class="${modelClassName?lower_case}-${fieldName}" value="<%= ${modelClassName?uncap_first} ? ${modelClassName?uncap_first}.get('${fieldName}') : '' %>" hidden />
+        <input type="text" class="${modelClassName?uncap_first}-${fieldName}" value="<%= ${modelClassName?uncap_first} ? ${modelClassName?uncap_first}.get('${fieldName}') : '' %>" hidden />
         </#if>
         
 		</#list>

@@ -8,6 +8,8 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import com.minimart.annotation.POSFieldAnnotation;
 import com.minimart.annotation.POSModelAnnotation;
 
@@ -16,6 +18,8 @@ import com.minimart.annotation.POSModelAnnotation;
  */
 @POSModelAnnotation(dbTableName = "INVENTORY_ITEM")
 @XmlRootElement
+@JsonIgnoreProperties(ignoreUnknown=true)
+
 public class InventoryItem extends POSModel implements java.io.Serializable {
 
 	/**

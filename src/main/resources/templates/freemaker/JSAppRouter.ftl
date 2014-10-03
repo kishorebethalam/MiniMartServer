@@ -1,6 +1,6 @@
 function setupDynamicRouting() {
 	
-	var AppRouter = Backbone.Router.extend({
+	var AppRouter = Backbone.CleanupRouter.extend({
 	
 		initialize: function(){
     		this.appView = window.AppView;
@@ -28,14 +28,17 @@ function setupDynamicRouting() {
     route.on('route:list${modelClassName}', function () {
 		var listView = new ${modelClassName}CollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:create${modelClassName}', function () {
 		var detailsView = new ${modelClassName}DetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:edit${modelClassName}', function (id) {
 		var detailsView = new ${modelClassName}DetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:delete${modelClassName}', function (id) {
 		var model = new ${modelClassName}Model({'id':id});

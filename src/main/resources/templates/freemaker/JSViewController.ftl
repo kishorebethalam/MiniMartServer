@@ -1,5 +1,9 @@
+Backbone.View.prototype.close = function () {
+    this.undelegateEvents();
+};
+
 <#list dtoClasses as modelClassName>
-var ${modelClassName}CollectionView = Backbone.View.extend({
+var ${modelClassName}CollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -13,7 +17,7 @@ var ${modelClassName}CollectionView = Backbone.View.extend({
     }
 });
 
-var ${modelClassName}DetailsView = Backbone.View.extend({
+var ${modelClassName}DetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #create${modelClassName}': 'create${modelClassName}',
@@ -32,7 +36,7 @@ var ${modelClassName}DetailsView = Backbone.View.extend({
 	   
 			_${modelClassName?uncap_first}Model.fetch({
 				success: function (data) {
-					var _${modelClassName?uncap_first}DetailTemplate = renderTemplate('${modelClassName?uncap_first}-details-template', { ${modelClassName?uncap_first}: data });
+					var _${modelClassName?uncap_first}DetailTemplate = renderTemplate('${modelClassName?lower_case}-details-template', { ${modelClassName?uncap_first}: data });
 					self.$el.html(_${modelClassName?uncap_first}DetailTemplate);
 				}
 			});
@@ -40,7 +44,7 @@ var ${modelClassName}DetailsView = Backbone.View.extend({
 		else
 		{
 			// ${modelClassName} is created
-			var _${modelClassName?uncap_first}DetailTemplate = renderTemplate('${modelClassName?uncap_first}-details-template', { ${modelClassName?uncap_first}: null });
+			var _${modelClassName?uncap_first}DetailTemplate = renderTemplate('${modelClassName?lower_case}-details-template', { ${modelClassName?uncap_first}: null });
 			this.$el.html(_${modelClassName?uncap_first}DetailTemplate);
 		}
 	},

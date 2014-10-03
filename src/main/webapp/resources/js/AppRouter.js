@@ -1,6 +1,6 @@
 function setupDynamicRouting() {
 	
-	var AppRouter = Backbone.Router.extend({
+	var AppRouter = Backbone.CleanupRouter.extend({
 	
 		initialize: function(){
     		this.appView = window.AppView;
@@ -45,14 +45,17 @@ function setupDynamicRouting() {
     route.on('route:listCategory', function () {
 		var listView = new CategoryCollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:createCategory', function () {
 		var detailsView = new CategoryDetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:editCategory', function (id) {
 		var detailsView = new CategoryDetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:deleteCategory', function (id) {
 		var model = new CategoryModel({'id':id});
@@ -63,14 +66,17 @@ function setupDynamicRouting() {
     route.on('route:listManufacturer', function () {
 		var listView = new ManufacturerCollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:createManufacturer', function () {
 		var detailsView = new ManufacturerDetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:editManufacturer', function (id) {
 		var detailsView = new ManufacturerDetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:deleteManufacturer', function (id) {
 		var model = new ManufacturerModel({'id':id});
@@ -81,14 +87,17 @@ function setupDynamicRouting() {
     route.on('route:listBrand', function () {
 		var listView = new BrandCollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:createBrand', function () {
 		var detailsView = new BrandDetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:editBrand', function (id) {
 		var detailsView = new BrandDetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:deleteBrand', function (id) {
 		var model = new BrandModel({'id':id});
@@ -99,14 +108,17 @@ function setupDynamicRouting() {
     route.on('route:listInventoryItem', function () {
 		var listView = new InventoryItemCollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:createInventoryItem', function () {
 		var detailsView = new InventoryItemDetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:editInventoryItem', function (id) {
 		var detailsView = new InventoryItemDetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:deleteInventoryItem', function (id) {
 		var model = new InventoryItemModel({'id':id});
@@ -117,14 +129,17 @@ function setupDynamicRouting() {
     route.on('route:listProduct', function () {
 		var listView = new ProductCollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:createProduct', function () {
 		var detailsView = new ProductDetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:editProduct', function (id) {
 		var detailsView = new ProductDetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:deleteProduct', function (id) {
 		var model = new ProductModel({'id':id});
@@ -135,14 +150,17 @@ function setupDynamicRouting() {
     route.on('route:listProductMaster', function () {
 		var listView = new ProductMasterCollectionView();
 		listView.render();
+		this.markCurrentView(listView);		
 	});
 	route.on('route:createProductMaster', function () {
 		var detailsView = new ProductMasterDetailsView();
     	detailsView.render();
+    	this.markCurrentView(detailsView);
     });
 	route.on('route:editProductMaster', function (id) {
 		var detailsView = new ProductMasterDetailsView();
 	   	detailsView.render(id);
+    	this.markCurrentView(detailsView);	   	
 	});
 	route.on('route:deleteProductMaster', function (id) {
 		var model = new ProductMasterModel({'id':id});

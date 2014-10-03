@@ -1,4 +1,8 @@
-var CategoryCollectionView = Backbone.View.extend({
+Backbone.View.prototype.close = function () {
+    this.undelegateEvents();
+};
+
+var CategoryCollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -12,7 +16,7 @@ var CategoryCollectionView = Backbone.View.extend({
     }
 });
 
-var CategoryDetailsView = Backbone.View.extend({
+var CategoryDetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #createCategory': 'createCategory',
@@ -77,7 +81,7 @@ var CategoryDetailsView = Backbone.View.extend({
 		window.App.appRouter.navigate('category/list', { trigger: true });// Navigate back to listing page
 	}
 });
-var ManufacturerCollectionView = Backbone.View.extend({
+var ManufacturerCollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -91,7 +95,7 @@ var ManufacturerCollectionView = Backbone.View.extend({
     }
 });
 
-var ManufacturerDetailsView = Backbone.View.extend({
+var ManufacturerDetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #createManufacturer': 'createManufacturer',
@@ -152,7 +156,7 @@ var ManufacturerDetailsView = Backbone.View.extend({
 		window.App.appRouter.navigate('manufacturer/list', { trigger: true });// Navigate back to listing page
 	}
 });
-var BrandCollectionView = Backbone.View.extend({
+var BrandCollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -166,7 +170,7 @@ var BrandCollectionView = Backbone.View.extend({
     }
 });
 
-var BrandDetailsView = Backbone.View.extend({
+var BrandDetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #createBrand': 'createBrand',
@@ -231,7 +235,7 @@ var BrandDetailsView = Backbone.View.extend({
 		window.App.appRouter.navigate('brand/list', { trigger: true });// Navigate back to listing page
 	}
 });
-var InventoryItemCollectionView = Backbone.View.extend({
+var InventoryItemCollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -245,7 +249,7 @@ var InventoryItemCollectionView = Backbone.View.extend({
     }
 });
 
-var InventoryItemDetailsView = Backbone.View.extend({
+var InventoryItemDetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #createInventoryItem': 'createInventoryItem',
@@ -264,7 +268,7 @@ var InventoryItemDetailsView = Backbone.View.extend({
 	   
 			_inventoryItemModel.fetch({
 				success: function (data) {
-					var _inventoryItemDetailTemplate = renderTemplate('inventoryItem-details-template', { inventoryItem: data });
+					var _inventoryItemDetailTemplate = renderTemplate('inventoryitem-details-template', { inventoryItem: data });
 					self.$el.html(_inventoryItemDetailTemplate);
 				}
 			});
@@ -272,7 +276,7 @@ var InventoryItemDetailsView = Backbone.View.extend({
 		else
 		{
 			// InventoryItem is created
-			var _inventoryItemDetailTemplate = renderTemplate('inventoryItem-details-template', { inventoryItem: null });
+			var _inventoryItemDetailTemplate = renderTemplate('inventoryitem-details-template', { inventoryItem: null });
 			this.$el.html(_inventoryItemDetailTemplate);
 		}
 	},
@@ -322,7 +326,7 @@ var InventoryItemDetailsView = Backbone.View.extend({
 		window.App.appRouter.navigate('inventoryItem/list', { trigger: true });// Navigate back to listing page
 	}
 });
-var ProductCollectionView = Backbone.View.extend({
+var ProductCollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -336,7 +340,7 @@ var ProductCollectionView = Backbone.View.extend({
     }
 });
 
-var ProductDetailsView = Backbone.View.extend({
+var ProductDetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #createProduct': 'createProduct',
@@ -413,7 +417,7 @@ var ProductDetailsView = Backbone.View.extend({
 		window.App.appRouter.navigate('product/list', { trigger: true });// Navigate back to listing page
 	}
 });
-var ProductMasterCollectionView = Backbone.View.extend({
+var ProductMasterCollectionView = Backbone.CleanupView.extend({
     el: '.contentarea',
     render: function () {
         var self = this;// Saving the scope object
@@ -427,7 +431,7 @@ var ProductMasterCollectionView = Backbone.View.extend({
     }
 });
 
-var ProductMasterDetailsView = Backbone.View.extend({
+var ProductMasterDetailsView = Backbone.CleanupView.extend({
 	el: '.contentarea',
 	events: {
         'click #createProductMaster': 'createProductMaster',
@@ -446,7 +450,7 @@ var ProductMasterDetailsView = Backbone.View.extend({
 	   
 			_productMasterModel.fetch({
 				success: function (data) {
-					var _productMasterDetailTemplate = renderTemplate('productMaster-details-template', { productMaster: data });
+					var _productMasterDetailTemplate = renderTemplate('productmaster-details-template', { productMaster: data });
 					self.$el.html(_productMasterDetailTemplate);
 				}
 			});
@@ -454,7 +458,7 @@ var ProductMasterDetailsView = Backbone.View.extend({
 		else
 		{
 			// ProductMaster is created
-			var _productMasterDetailTemplate = renderTemplate('productMaster-details-template', { productMaster: null });
+			var _productMasterDetailTemplate = renderTemplate('productmaster-details-template', { productMaster: null });
 			this.$el.html(_productMasterDetailTemplate);
 		}
 	},

@@ -7,16 +7,6 @@
 
 
  */
-
-Backbone.View.prototype.close = function(){
-	alert('view close is called');
-	this.remove();
-	this.unbind();
-}
-Backbone.View.prototype.dispose = function(){
-	alert('dispose is called');
-}
-
 var App = function() {
 
    this.ModelController = new ModelController();
@@ -27,7 +17,6 @@ var App = function() {
    
    return window.App;
 };
-
 
 // function AppView(){
 //  
@@ -56,6 +45,47 @@ function getSelectedTabId(){
 	return '';
 }
 
+
+
+function selectTabByRoute(tabsContainerSelector, routeBase){
+	if (routeBase == 'topology'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Topology');
+	} 
+	else if (routeBase == 'explore'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Explore');
+	} 
+	else if (routeBase == 'query'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Query');
+	} 
+
+	else if (routeBase == 'alerts'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Alerts');
+	} 
+
+	else if (routeBase == 'replication'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Replication');
+	} 
+	else if (routeBase == 'migrationJobs'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Migrations');
+	} 
+	else if (routeBase == 'migrationMetrics'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Migrations');
+	} 
+	else if (routeBase == 'backups'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Backups');
+	} 
+
+	else if (routeBase == 'rules'){
+		updateTabsUIOnSelect(tabsContainerSelector, 'Rules');
+	}
+}
+/*
+    Utility method to select the first tab in a container.
+    This is used by index.html so that the first node is selected by default.
+ */
+function selectFirstTab(tabsContainerSelector){
+    $(tabsContainerSelector + " .tabitem:first-of-type").click();
+}
 /*
     Utility method to update UI based on a tab selection.
     This method updates the UI so that the current tab is highlighted and others are de-highlighted.
